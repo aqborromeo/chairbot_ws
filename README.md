@@ -1,0 +1,85 @@
+# Creating a Workspace
+
+$ mkdir -p chairbot_ws/src
+$ cd chairbot_ws
+$ touch README.md
+
+## Prerequisites
+1. ROS and Gazebo
+2. CMake & g++/gcc, C++11
+ 
+### Dependencies
+```
+$ sudo apt-get install xterm
+$ sudo apt-get install python3-pip
+$ sudo apt-get update && sudo apt-get upgrade -y
+$ sudo apt-get install ros-${ROS_DISTRO}-map-server
+$ sudo apt-get install ros-${ROS_DISTRO}-amcl
+$ sudo apt-get install ros-${ROS_DISTRO}-move-base
+$ sudo apt-get install ros-${ROS_DISTRO}-slam-gmapping
+$ pip install rospkg
+```
+
+## Build
+1. Initialize the catkin workspace
+```
+$ cd src && catkin_init_workspace
+```
+
+2. Navigate back to the project folder and build the project
+```
+$ cd ..
+$ catkin_make
+```
+
+# Build Catkin Packages
+
+## Chairbot Simulation
+
+1. Build catkin package
+```
+$ cd ~/chairbot_ws/src
+$ catkin_create_pkg chairbot_simulation roscpp rospy std_msgs urdf
+$ cd ../
+$ catkin_make
+
+```
+2. Give structure to the conventional folders in the package
+```
+$ cd ~/chairbot_ws/src/chairbot_simulation
+$ ls -lrt
+$ mkdir -p urdf models worlds launch
+$ touch README.md
+```
+
+## Chairbot Localization
+
+1. Build catkin package
+```
+$ cd ~/chairbot_ws/src
+$ catkin_create_pkg chairbot_localization roscpp rospy std_msgs urdf
+
+```
+2. Give structure to the conventional folders in the package
+```
+$ cd ~/chairbot_ws/src/chairbot_localization
+$ ls -lrt
+$ mkdir -p urdf models worlds launch maps config
+$ touch README.md
+```
+
+## Chairbot Navigation
+
+1. Build catkin package
+```
+$ cd ~/chairbot_ws/src
+$ catkin_create_pkg chairbot_navigation roscpp rospy std_msgs urdf
+
+```
+2. Give structure to the conventional folders in the package
+```
+$ cd ~/chairbot_ws/src/chairbot_navigation
+$ ls -lrt
+$ mkdir -p urdf models worlds launch maps config
+$ touch README.md
+```
