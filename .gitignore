@@ -12,7 +12,9 @@ chairbot_ws/src/chairbot_path_planning
 .catkin_workspace
 
 
-Chairbot Packages
+# Chairbot Packages
+chairbot_ws/src/CMakeLists.txt
+chairbot_ws/src/chairbot
 *chairbot_ws/src/chairbot_localization/CMakeLists.txt
 *chairbot_ws/src/chairbot_localization/package.xml
 *chairbot_ws/src/chairbot_localization/src/CMakeLists.txt

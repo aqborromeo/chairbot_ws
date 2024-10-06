@@ -1,0 +1,54 @@
+This instruction was created to run the steps use for our experimentation
+
+NOTE: Refer to the main Readme.md file for description of each package.
+
+# Package: Navigation
+
+## Build
+    1. Initialize a catkin workspace
+
+    $ cd ~/chairbot_ws/src && catkin_init_workspace
+
+    2. Move back to the project folder and build
+
+    $ cd ..
+    $ catkin_make
+
+    3. In a terminal Launch the world and robot
+
+    $ source ~/chairbot_ws/devel/setup.bash
+    $ roslaunch chairbot_navigation single_chair.launch
+
+
+## SLAM Mapping
+    NOTE: this section is optional, only if would like to create a new map, otherwise you can skip and proceed to navigation section
+
+    1. In a second terminal launch the `chairbot_navigation_slam.launch` file to start the creating SLAM mapping.
+
+    $ roslaunch chairbot_navigation chairbot_navigation_slam.launch
+
+
+    2. Open third terminal, and run the `teleop` node and move around, then save the map.
+
+    $ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+
+
+    3. Open fourth terminal, save the map on the intended localtion
+
+    $ rosrun map_server map_saver -f ~/chairbot_ws/src/chairbot_navigation/maps/office_map4
+
+    4. Stop and close all terminal, then Move to the navigation part
+
+## Navigation
+
+    1. In a terminal Launch the world and robot
+
+    $ source ~/chairbot_ws/devel/setup.bash
+    $ roslaunch chairbot_navigation single_chair.launch
+
+    2. Open second terminal Launch `chairbot_navigation.launch`
+
+    $ source ~/chairbot_ws/devel/setup.bash
+    $ roslaunch chairbot_navigation chairbot_navigation.launch map_file:=$HOME/chairbot_ws/src/chairbot_navigation/maps/office_map2.yaml
+
+    3. Go to rviz and test the navigation by clicking "2D Post Estinamate" and "2D Nav Goal".
