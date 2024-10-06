@@ -28,7 +28,7 @@ $ cd ~/chairbot_ws/src && catkin_init_workspace
 2. Within `src`, clone the `teleop` package
 ```
 $ cd ~/chairbot_ws/src
-$ git clone
+$ git clone https://github.com/ROBOTIS-GIT/turtlebot3.git
 ```
 
 3. Move back to the project directory and build
