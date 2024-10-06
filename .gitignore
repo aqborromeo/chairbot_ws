@@ -10,14 +10,14 @@ chairbot_ws/src/chairbot_path_planning
 
 # Chaibot workspace
 .catkin_workspace
-*.catkin_workspace
-*chairbot_ws/build
-*chairbot_ws/devel
+# *.catkin_workspace
+# *chairbot_ws/build
+# *chairbot_ws/devel
 
 # Chairbot Packages
-*chairbot_ws/src/chairbot_localization/CMakeLists.txt
-*chairbot_ws/src/chairbot_localization/package.xml
-*chairbot_ws/src/chairbot_localization/src/CMakeLists.txt
+# *chairbot_ws/src/chairbot_localization/CMakeLists.txt
+# *chairbot_ws/src/chairbot_localization/package.xml
+# *chairbot_ws/src/chairbot_localization/src/CMakeLists.txt
 
 # User-specific files
 *.rsuser

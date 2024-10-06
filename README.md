@@ -17,11 +17,11 @@ The primary goal is to autonomously rearrange at least 3 meeting chairs to a pre
 
 Refer to below instruction for installing the dependencies.
 
-![install_dependencies]()
+![install_dependencies](https://github.com/aqborromeo/chairbot_ws/blob/main/Instructions%20README/1.%20Install%20Dependencies)
 
 # Downloading the Chairbot Workspace
 
-![download_chairbot]()
+![download_chairbot](https://github.com/aqborromeo/chairbot_ws/blob/main/Instructions%20README/2.%20Download%20Chairbot%20Package)
 
 # Experimentation
 
@@ -31,7 +31,7 @@ This repository have multiple package each representing experementation stages t
 This package show the experimentation taken to create models and create world for chairbot. A launch file was created for single chairbot and multiple chairbot.
 
 Instruction on how to test the worlds can be seen on this link.
-![chairbot_simulation_world]()
+![chairbot_simulation_world](https://github.com/aqborromeo/chairbot_ws/blob/main/Instructions%20README/3.%20Experimentation_Simulation_World)
 
 ## Localization: 
 Instruction below will cover both map creation and testing the localization for chairbot.
@@ -39,23 +39,23 @@ The localization system of the chairbot uses algorithms like Adaptive Monte Carl
 
 
 Instruction on how to test the worlds can be seen on this link.
-![chairbot_localization]()
+![chairbot_localization](https://github.com/aqborromeo/chairbot_ws/blob/main/Instructions%20README/4.%20Experimentation_Localization)
 
 ## Navigation:
 
 The navigation system of the chair allows it to autonomously move within an environment using SLAM (Simultaneous Localization and Mapping) or a pre-built map. It relies on sensor data, primarily from its lidar, to avoid obstacles, plan paths, and localize itself within the map. The navigation is controlled through ROS packages which we have adopted like `move_base`, which integrates global and local planners for pathfinding and obstacle avoidance.
 
 Instruction on how to test the worlds can be seen on this link.
-![chairbot_navigation]()
+![chairbot_navigation](https://github.com/aqborromeo/chairbot_ws/blob/main/Instructions%20README/4.%20Experimentation_Localization)
 
 ## Path Planning:
 
 The path planning system of the TurtleBot3 Waffle Pi is responsible for generating efficient routes for the robot to navigate from a start position to a goal while avoiding obstacles. It utilizes algorithms such as Dijkstra's or A* for global path planning, which calculate optimal paths based on the map data, and local planners to dynamically adjust the route in real-time as the robot encounters obstacles. This integrated approach ensures that the TurtleBot3 can navigate complex environments smoothly and safely.
 
-![chairbot_path_planning]()
+![chairbot_path_planning](https://github.com/aqborromeo/chairbot_ws/blob/main/Instructions%20README/6.%20Experiment_Path_Planning)
 
 ## Chairbot:
 
 UNDER CONSTRUCTION
 
-![chairbot]()
+![chairbot](https://github.com/aqborromeo/chairbot_ws/blob/main/Instructions%20README/7.%20Chairbot%20(Self%20Organizing%20Chair)%20)
