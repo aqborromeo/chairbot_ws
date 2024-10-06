@@ -1,8 +1,0 @@
-prefix=/home/aqborromeo/chairbot_ws/devel
-
-Name: chairbot_navigation
-Description: Description of chairbot_navigation
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

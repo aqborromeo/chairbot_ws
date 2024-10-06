@@ -1,8 +1,0 @@
-prefix=/home/aqborromeo/chairbot_ws/install
-
-Name: chairbot_simulation
-Description: Description of chairbot_simulation
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

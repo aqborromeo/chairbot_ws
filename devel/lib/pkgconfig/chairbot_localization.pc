@@ -1,8 +1,0 @@
-prefix=/home/aqborromeo/chairbot_ws/devel
-
-Name: chairbot_localization
-Description: Description of chairbot_localization
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
