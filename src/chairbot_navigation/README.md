@@ -1,9 +1,9 @@
-# Mapping
-![features]()
+# Navigation
+![chairbot_navigation](https://github.com/aqborromeo/chairbot_ws/tree/main/src/chairbot_navigation)
 
-When a robot finds itself in a new environment it must create a map and localise itself within it. Mapping algorithms that can be used include Occupancy Grid Mapping, Grid-based FastSLAM, Graph-SLAM and RTAB-Map.
+When a robot encounters a new environment, it needs to both create a map and localize itself within it. Mapping algorithms that can be applied include Occupancy Grid Mapping, Grid-based FastSLAM, Graph-SLAM, and RTAB-Map.
 
-[RTAB-Map (Real-Time Appearance-Based Mapping)](http://introlab.github.io/rtabmap/) is a Graph-SLAM approach that performs [Loop Closure](http://www.cds.caltech.edu/~murray/courses/me132-wi11/me132a_lec16.pdf) with [Visual Bag-of-Words](https://www.youtube.com/watch?v=a4cFONdc6nc). Loop closure occurs inside working memory based on features detected with [SURF (Speeded Up Robust Features)](https://people.ee.ethz.ch/~surf/eccv06.pdf) esimating how likely a new image comes from a previous location or a new location. When a loop closure hypothesis is accepted, a new constraint is added to the map’s graph and an optimizer minimizes the mapping errors. A memory management is used to limit the number of locations used for loop closure detection and graph optimization, so that real-time constraints on large-scale environnements are respected.
+RTAB-Map (Real-Time Appearance-Based Mapping) is a SLAM (Simultaneous Localization and Mapping) algorithm used for creating 3D maps of environments while simultaneously tracking a robot's position. It combines visual, laser, or RGB-D sensor data to build detailed, large-scale maps and efficiently manage memory by prioritizing more relevant areas for exploration. RTAB-Map is particularly useful for robotics applications requiring real-time navigation and localization in complex, dynamic environments.
 
 In this module [rtabmap-ros](http://wiki.ros.org/rtabmap_ros) (a ROS wrapper around the RTAB-Map) will be used with a RGB-D camera which can generate 3D point clouds of the environment and/or create a 2D occupancy grid map for navigation. We will be generating a 2D occupancy grid map.
 

@@ -6,8 +6,7 @@ The team rely on AMCL (Adaptive Monte Carlo Localization) is a probabilistic alg
 
 
 # Self Organizing Chair Environment Localization
-![chairbot_localization](https://)
-
+![chairbot_localization](https://github.com/aqborromeo/chairbot_ws/tree/main/src/chairbot_localization)
 
 ## Prerequisites
 1. ROS and Gazebo

@@ -2,7 +2,7 @@
 This gazebo package experimentation was only use to test and update the gazebo world to be use for this project. 
 
 # Self Organizing Chair Environment Simulation
-![chairbot_simulation](https://)
+![chairbot_simulation](https://github.com/aqborromeo/chairbot_ws/tree/main/src/chairbot_simulation)
 
 ## Prerequisites
 This project requires that ROS and Gazebo are installed along with the gcc compiler.
