@@ -14,7 +14,8 @@ chairbot_ws/src/chairbot_path_planning
 
 # Chairbot Packages
 chairbot_ws/src/CMakeLists.txt
-chairbot_ws/src/chairbot
+
+#Localization
 *chairbot_ws/src/chairbot_localization/CMakeLists.txt
 *chairbot_ws/src/chairbot_localization/package.xml
 *chairbot_ws/src/chairbot_localization/src/CMakeLists.txt
