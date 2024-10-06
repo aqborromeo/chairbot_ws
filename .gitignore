@@ -9,15 +9,13 @@ chairbot_ws/src/chairbot
 chairbot_ws/src/chairbot_path_planning
 
 # Chaibot workspace
-*.catkin_work*
-# *.catkin_workspace
-# *chairbot_ws/build
-# *chairbot_ws/devel
+.catkin_workspace
 
-# Chairbot Packages
-# *chairbot_ws/src/chairbot_localization/CMakeLists.txt
-# *chairbot_ws/src/chairbot_localization/package.xml
-# *chairbot_ws/src/chairbot_localization/src/CMakeLists.txt
+
+Chairbot Packages
+*chairbot_ws/src/chairbot_localization/CMakeLists.txt
+*chairbot_ws/src/chairbot_localization/package.xml
+*chairbot_ws/src/chairbot_localization/src/CMakeLists.txt
 
 # Compiled Object files
 *.slo
@@ -60,6 +58,7 @@ chairbot_ws/src/chairbot_path_planning
 cpp/
 bin/
 build/
+devel/
 msg_gen/
 srv_gen/
 docs/
