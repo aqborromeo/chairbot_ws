@@ -3,3 +3,75 @@
 This will include
 - path planning
 - obstacle avoidance
+
+
+This instruction was created to run the steps use for our experimentation
+
+NOTE: Refer to the main Readme.md file for description of each package.
+
+# Package: Path_planning
+
+## Build
+    1. Initialize a catkin workspace
+
+    $ cd ~/chairbot_ws/src && catkin_init_workspace
+
+    2. Move back to the project folder and build
+
+    $ cd ..
+    $ catkin_make
+
+    3. In a terminal Launch the world and robot
+
+    $ source ~/chairbot_ws/devel/setup.bash
+
+## Path_Planning for A Single Chair
+
+    1. To launch the simulation stack for a single chair.
+    # NOTE: if you run this no need to run the chairbot.launch
+
+    $ roslaunch chairbot_simulation single_chair.launch
+
+    2. In another terminal launch the navigation stack.
+
+    $ roslaunch chairbot_navigation chairbot_navigation.launch
+
+    3. Open third terminal to run the python script
+
+    # To run the python sript for single turtlebot 
+    $ rosrun chairbot_path_planning path_planning.py
+
+    3. Go to rviz and test the path_planning see the path
+
+
+## Path_Planning for A Multiple Chairs -- ONGOING WORK
+
+    1.  To launch the simulation stack for a multi_chairs.
+
+    $ roslaunch chairbot_simulation multi_chair.launch
+
+    2. In another terminal launch the navigation stack for robot1.
+
+    $ roslaunch chairbot_navigation robot1_navigation.launch
+
+    3. In another terminal launch the navigation stack for robot2.
+
+    $ roslaunch chairbot_navigation robot2_navigation.launch
+
+    4. In another terminal launch the navigation stack for robot3.
+
+    $ roslaunch chairbot_navigation robot3_navigation.launch
+
+    5. Open third terminal,
+    
+        # 5.1 To send manual goals to each robots using rviz you can run
+
+        $ rostopic pub /robot1/move_base_simple/goal geometry_msgs/PoseStamped '{header: {stamp: now, frame_id: "map"}, pose: {position: {x: 2.0, y: 2.0, z: 0.0}, orientation: {w: 1.0}}}'
+        $ rostopic pub /robot2/move_base_simple/goal geometry_msgs/PoseStamped '{header: {stamp: now, frame_id: "map"}, pose: {position: {x: -2.0, y: -2.0, z: 0.0}, orientation: {w: 1.0}}}'
+        $ rostopic pub /robot3/move_base_simple/goal geometry_msgs/PoseStamped '{header: {stamp: now, frame_id: "map"}, pose: {position: {x: -2.0, y: -2.0, z: 0.0}, orientation: {w: 1.0}}}'
+
+
+        # 5.2 Alternatively you can run the python script for multiple turtlebot 
+        $ rosrun chairbot_path_planning chairbot_path_planning.py
+
+        # 5.3 Another alternative go to rviz and test the path_planning by clicking "2D Post Estinamate" and "2D Nav Goal".

@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Arguments for spawning multiple robots -->
+  <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
+  <arg name="robot1_namespace" value="robot1"/>
+  <arg name="robot2_namespace" value="robot2"/>
+  <arg name="robot3_namespace" value="robot3"/>
+
+  <arg name="robot1_initial_pose_x" default="0.76"/>
+  <arg name="robot1_initial_pose_y" default="6.48"/>
+  <arg name="robot1_initial_pose_z" default="-0.001"/>
+  <arg name="robot1_initial_pose_yaw" default="0.05"/>
+  
+  <arg name="robot2_initial_pose_x" default="8.28"/>
+  <arg name="robot2_initial_pose_y" default="6.40"/>
+  <arg name="robot2_initial_pose_z" default="-0.001"/>
+  <arg name="robot2_initial_pose_yaw" default="-0.0"/>
+
+  <arg name="robot3_initial_pose_x" default="7.99"/>
+  <arg name="robot3_initial_pose_y" default="8.82"/>
+  <arg name="robot3_initial_pose_z" default="-0.001"/>
+  <arg name="robot3_initial_pose_yaw" default="0.97"/>
+  
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find chairbot_simulation)/worlds/office2.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>  
+
+  <!-- Spawn first Chairbot -->
+  <group ns="robot1">
+    
+    <param name="$(arg robot1_namespace)/robot_description" command="$(find xacro)/xacro --inorder $(find chairbot_navigation)/urdf/turtlebot3_$(arg model).urdf.xacro" />
+
+    <param name="tf_prefix" value="$(arg robot1_namespace)_tf" />
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
+      <param name="publish_frequency" type="double" value="50.0" />
+    </node>
+ 
+
+    <!-- Spawning the robot in Gazebo -->
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" output="screen"
+        args="-urdf -param $(arg robot1_namespace)/robot_description -model $(arg robot1_namespace) -x $(arg robot1_initial_pose_x) -y $(arg robot1_initial_pose_y) -z $(arg robot1_initial_pose_z) -Y $(arg robot1_initial_pose_yaw)" />
+
+    <!-- <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf"  args="-urdf -model $(arg robot1_namespace) -x $(arg robot1_initial_pose_x) -y $(arg robot1_initial_pose_y) -z $(arg robot1_initial_pose_z) -Y $(arg robot1_initial_pose_yaw) -param robot1/robot_description" /> -->
+
+    <!-- Run Gazebo for the first Chairbot -->
+    <!-- <include file="$(find chairbot_simulation)/worlds/office2.world"/> -->
+
+  </group>
+
+  <!-- Spawn second Chairbot -->
+  <group ns="robot2">
+    
+    <param name="$(arg robot2_namespace)/robot_description" command="$(find xacro)/xacro --inorder $(find chairbot_navigation)/urdf/turtlebot3_$(arg model).urdf.xacro" />
+
+    <param name="tf_prefix" value="$(arg robot2_namespace)_tf" />
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
+      <param name="publish_frequency" type="double" value="50.0" />
+    </node>
+
+    <!-- Spawning the robot in Gazebo -->
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" output="screen"
+        args="-urdf -param $(arg robot2_namespace)/robot_description -model $(arg robot2_namespace) -x $(arg robot2_initial_pose_x) -y $(arg robot2_initial_pose_y) -z $(arg robot2_initial_pose_z) -Y $(arg robot2_initial_pose_yaw)" />
+
+    <!-- <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf"  args="-urdf -model $(arg robot2_namespace) -x $(arg robot2_initial_pose_x) -y $(arg robot2_initial_pose_y) -z $(arg robot2_initial_pose_z) -Y $(arg robot2_initial_pose_yaw) -param robot2/robot_description" /> -->
+
+  </group>
+
+  <!-- Spawn third Chairbot -->
+  <group ns="robot3">
+    <param name="$(arg robot3_namespace)/robot_description" command="$(find xacro)/xacro --inorder $(find chairbot_navigation)/urdf/turtlebot3_$(arg model).urdf.xacro" />
+    
+    <param name="tf_prefix" value="$(arg robot3_namespace)_tf" />
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
+      <param name="publish_frequency" type="double" value="50.0" />
+    </node>
+    
+    <!-- Spawning the robot in Gazebo -->
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" output="screen"
+        args="-urdf -param $(arg robot3_namespace)/robot_description -model $(arg robot3_namespace) -x $(arg robot3_initial_pose_x) -y $(arg robot3_initial_pose_y) -z $(arg robot3_initial_pose_z) -Y $(arg robot3_initial_pose_yaw)" />
+
+    <!-- <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf"  args="-urdf -model $(arg robot3_namespace) -x $(arg robot3_initial_pose_x) -y $(arg robot3_initial_pose_y) -z $(arg robot3_initial_pose_z) -Y $(arg robot3_initial_pose_yaw) -param robot3/robot_description" /> -->
+  </group>
+
+</launch>

@@ -26,14 +26,19 @@ $ GAZEBO_PLUGIN_PATH=${GAZEBO_PLUGIN_PATH}:~/chairbot_ws/src/chairbot_simulation
 $ cd ~/chairbot_ws/src/chairbot_simulation/
 
 
-6. Launch the simulation world for a single chairbot.
+6. Launch the simulation world for a single chairbot. (Can skip this one is just to test the world if you want to make some modification).
     `gazebo worlds/office_empty.world`
     `gazebo worlds/office_table.world`
     `gazebo worlds/office.world`
     `gazebo worlds/office1.world`
     `gazebo worlds/office2.world`
 
-7. Close all terminal and reopen and new one. Launch a new terminal to launch multiple chairbot.
+7. Close all terminal and reopen and new one. Launch a new terminal to launch chairbot.
 
-$ roslaunch chairbot_simulation chairbots.launch
+# To launch a single chairbot
+$ roslaunch chairbot_simulation single_chair.launch
+
+# To launch a multiple chairbot
+# $ roslaunch chairbot_simulation chairbots.launch
+$ roslaunch chairbot_simulation multi_chair.launch
 
