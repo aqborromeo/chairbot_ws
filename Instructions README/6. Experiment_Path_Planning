@@ -23,7 +23,11 @@ NOTE: Refer to the main Readme.md file for description of each package.
 
     3. In a terminal Launch the world and robot
 
-    $ source ~/chairbot_ws/devel/setup.bash
+    $ source devel/setup.bash
+
+    4. You may set the Turtlebot type in setup.bash if the system is not detecting the correct type.
+
+    $ echo 'export TURTLEBOT3_MODEL=waffle_pi' >> devel/setup.bash
 
 ## Path_Planning for A Single Chair
 
