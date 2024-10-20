@@ -1,0 +1,26 @@
+<launch>
+    <arg name="robot_name"/>
+    <arg name="init_pose_x" default="0.0"/>
+    <arg name="init_pose_y" default="0.0"/>
+    <arg name="init_pose_z" default="0.0"/>
+    <arg name="init_pose_a" default="0.0"/>
+    <arg name="publish_frequency" default="50.0"/>
+    <arg name="tf_prefix" default="$(arg robot_name)_tf"/>
+
+    <node name="spawn_chairbot_model" pkg="gazebo_ros" type="spawn_model"
+     args="-urdf -param /robot_description -model $(arg robot_name)
+           -x $(arg init_pose_x) 
+           -y $(arg init_pose_y) 
+           -z $(arg init_pose_z) 
+           -Y $(arg init_pose_a)
+           -wait -timeout 120"
+     respawn="false" output="screen" />
+
+    <!-- Run robot state publisher -->
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
+        <param name="publish_frequency" type="double" value="$(arg publish_frequency)" />
+    </node>
+
+    <!-- The odometry estimator, throttling, fake laser etc. go here -->
+    <!-- All the stuff as from usual robot launch file -->
+</launch>
