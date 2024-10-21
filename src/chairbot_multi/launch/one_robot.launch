@@ -12,15 +12,25 @@
            -x $(arg init_pose_x) 
            -y $(arg init_pose_y) 
            -z $(arg init_pose_z) 
-           -Y $(arg init_pose_a)
-           -wait -timeout 120"
-     respawn="false" output="screen" />
+           -Y $(arg init_pose_a)"
+     respawn="false" />
 
     <!-- Run robot state publisher -->
     <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
         <param name="publish_frequency" type="double" value="$(arg publish_frequency)" />
     </node>
+    
 
-    <!-- The odometry estimator, throttling, fake laser etc. go here -->
-    <!-- All the stuff as from usual robot launch file -->
+    <!-- Include AMCL launch file -->
+    <include file="$(find chairbot_multi)/launch/navigation/amcl.launch">
+        <arg name="initial_pose_x" value="$(arg init_pose_x)"/>
+        <arg name="initial_pose_y" value="$(arg init_pose_y)"/>
+        <arg name="initial_pose_a" value="$(arg init_pose_a)"/>
+        <arg name="tf_prefix" value="$(arg tf_prefix)"/>
+    </include>
+
+    <!-- Include Navigation launch file -->
+    <include file="$(find chairbot_multi)/launch/navigation/navigation.launch">
+        <arg name="tf_prefix" value="$(arg tf_prefix)"/>
+    </include>
 </launch>

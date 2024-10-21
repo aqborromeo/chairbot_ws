@@ -8,8 +8,9 @@
   <!-- BEGIN ROBOT 1-->
   <group ns="robot1">
     <param name="tf_prefix" value="robot1_tf" />
+    
     <include file="$(find chairbot_multi)/launch/one_robot.launch" >
-      <arg name="robot_name"  value="Robot1" />
+      <arg name="robot_name"  value="robot1" />
       <arg name="init_pose_x" value="1.22"/>
       <arg name="init_pose_y" value="6.03"/>
       <arg name="init_pose_a" value="0.00"/>
@@ -20,7 +21,7 @@
   <group ns="robot2">
     <param name="tf_prefix" value="robot2_tf" />
     <include file="$(find chairbot_multi)/launch/one_robot.launch" >
-      <arg name="robot_name"  value="Robot2" />
+      <arg name="robot_name"  value="robot2" />
       <arg name="init_pose_x" value="8.28"/>
       <arg name="init_pose_y" value="6.40"/>
       <arg name="init_pose_a" value="-0.01"/>
@@ -31,7 +32,7 @@
   <group ns="robot3">
     <param name="tf_prefix" value="robot3_tf" />
     <include file="$(find chairbot_multi)/launch/one_robot.launch" >
-      <arg name="robot_name"  value="Robot3" />
+      <arg name="robot_name"  value="robot3" />
       <arg name="init_pose_x" value="7.99"/>
       <arg name="init_pose_y" value="8.82"/>
       <arg name="init_pose_a" value="0.97"/>
