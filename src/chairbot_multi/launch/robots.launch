@@ -6,36 +6,36 @@
   <param name="robot_description" command="$(find xacro)/xacro $(find chairbot_simulation)/urdf/turtlebot3_$(arg model).urdf.xacro" />
 
   <!-- BEGIN ROBOT 1-->
-  <group ns="robot1">
-    <param name="tf_prefix" value="robot1_tf" />
+  <group ns="tb3_0">
+    <param name="tf_prefix" value="tb3_0" />
     
     <include file="$(find chairbot_multi)/launch/one_robot.launch" >
-      <arg name="robot_name"  value="robot1" />
-      <arg name="init_pose_x" value="1.22"/>
-      <arg name="init_pose_y" value="6.03"/>
-      <arg name="init_pose_a" value="0.00"/>
+      <arg name="robot_name"  value="tb3_0" />
+      <arg name="initial_pose_x" value="1.22"/>
+      <arg name="initial_pose_y" value="6.03"/>
+      <arg name="initial_pose_a" value="0.00"/>
     </include>
   </group>
 
   <!-- BEGIN ROBOT 2-->
-  <group ns="robot2">
-    <param name="tf_prefix" value="robot2_tf" />
+  <group ns="tb3_1">
+    <param name="tf_prefix" value="tb3_1" />
     <include file="$(find chairbot_multi)/launch/one_robot.launch" >
-      <arg name="robot_name"  value="robot2" />
-      <arg name="init_pose_x" value="8.28"/>
-      <arg name="init_pose_y" value="6.40"/>
-      <arg name="init_pose_a" value="-0.01"/>
+      <arg name="robot_name"  value="tb3_1" />
+      <arg name="initial_pose_x" value="8.28"/>
+      <arg name="initial_pose_y" value="6.40"/>
+      <arg name="initial_pose_a" value="-0.01"/>
     </include>
   </group>
 
   <!-- BEGIN ROBOT 3-->
-  <group ns="robot3">
-    <param name="tf_prefix" value="robot3_tf" />
+  <group ns="tb3_2">
+    <param name="tf_prefix" value="tb3_2" />
     <include file="$(find chairbot_multi)/launch/one_robot.launch" >
-      <arg name="robot_name"  value="robot3" />
-      <arg name="init_pose_x" value="7.99"/>
-      <arg name="init_pose_y" value="8.82"/>
-      <arg name="init_pose_a" value="0.97"/>
-      </include>
+      <arg name="robot_name"  value="tb3_2" />
+      <arg name="initial_pose_x" value="7.99"/>
+      <arg name="initial_pose_y" value="8.82"/>
+      <arg name="initial_pose_a" value="0.97"/>
+    </include>
   </group>
 </launch>

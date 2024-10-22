@@ -4,10 +4,13 @@
    args="$(find chairbot_simulation)/worlds/office2.world" respawn="false" output="screen" /> -->
   <env name="TURTLEBOT3_MODEL" value="waffle_pi" />
 
-  <arg name="map_file" default="$(find chairbot_navigation)/maps/office_map2.yaml"/>
+  <arg name="map_file" default="$(find chairbot_multi)/maps/office_map2.yaml"/>
 
-  <!-- Map server -->
-  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+  <param name="/use_sim_time" value="true" />
+
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)">
+    <param name="frame_id" value="/map"/>
+  </node>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(find chairbot_navigation)/worlds/office2.world"/>

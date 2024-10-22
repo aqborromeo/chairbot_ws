@@ -1,36 +1,39 @@
 <launch>
     <arg name="robot_name"/>
-    <arg name="init_pose_x" default="0.0"/>
-    <arg name="init_pose_y" default="0.0"/>
-    <arg name="init_pose_z" default="0.0"/>
-    <arg name="init_pose_a" default="0.0"/>
+    <arg name="initial_pose_x" default="0.0"/>
+    <arg name="initial_pose_y" default="0.0"/>
+    <arg name="initial_pose_z" default="0.0"/>
+    <arg name="initial_pose_a" default="0.0"/>
     <arg name="publish_frequency" default="50.0"/>
-    <arg name="tf_prefix" default="$(arg robot_name)_tf"/>
+    <arg name="tf_prefix" default="$(arg robot_name)"/>
 
     <node name="spawn_chairbot_model" pkg="gazebo_ros" type="spawn_model"
      args="-urdf -param /robot_description -model $(arg robot_name)
-           -x $(arg init_pose_x) 
-           -y $(arg init_pose_y) 
-           -z $(arg init_pose_z) 
-           -Y $(arg init_pose_a)"
+           -x $(arg initial_pose_x) 
+           -y $(arg initial_pose_y) 
+           -z $(arg initial_pose_z) 
+           -Y $(arg initial_pose_a)"
      respawn="false" />
 
     <!-- Run robot state publisher -->
-    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
+    <!-- <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
         <param name="publish_frequency" type="double" value="$(arg publish_frequency)" />
-    </node>
+        <param name="tf_prefix" value="$(arg tf_prefix)" />
+    </node> -->
     
 
     <!-- Include AMCL launch file -->
-    <include file="$(find chairbot_multi)/launch/navigation/amcl.launch">
-        <arg name="initial_pose_x" value="$(arg init_pose_x)"/>
-        <arg name="initial_pose_y" value="$(arg init_pose_y)"/>
-        <arg name="initial_pose_a" value="$(arg init_pose_a)"/>
-        <arg name="tf_prefix" value="$(arg tf_prefix)"/>
-    </include>
+    
 
     <!-- Include Navigation launch file -->
     <include file="$(find chairbot_multi)/launch/navigation/navigation.launch">
         <arg name="tf_prefix" value="$(arg tf_prefix)"/>
+        <arg name="initial_pose_x" value="$(arg initial_pose_x)"/>
+        <arg name="initial_pose_y" value="$(arg initial_pose_y)"/>
+        <arg name="initial_pose_a" value="$(arg initial_pose_a)"/>
     </include>
+
+    <!-- Run path planning -->
+    <node name="path_planning" pkg="chairbot_path_planning" type="path_planning.py" output="screen">
+    </node>
 </launch>

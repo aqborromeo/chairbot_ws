@@ -44,6 +44,9 @@
     <param name="odom_alpha4"               value="0.1"/>
     <param name="odom_frame_id"             value="$(arg tf_prefix)/odom"/>
     <param name="base_frame_id"             value="$(arg tf_prefix)/base_footprint"/>
+    <param name="global_frame_id"           value="map"/>
+    <param name="use_map_topic"             value="true"/>
+
 
   </node>
 </launch>
