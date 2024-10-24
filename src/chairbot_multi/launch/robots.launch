@@ -2,8 +2,13 @@
   <!-- No namespace here as we will share this description. 
        Access with slash at the beginning -->
   <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
+  <arg name="map_file" default="$(find chairbot_multi)/maps/office_map2.yaml"/>
 
   <param name="robot_description" command="$(find xacro)/xacro $(find chairbot_simulation)/urdf/turtlebot3_$(arg model).urdf.xacro" />
+
+   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)">
+    <param name="frame_id" value="map"/>
+  </node>
 
   <!-- BEGIN ROBOT 1-->
   <group ns="tb3_0">
@@ -38,4 +43,8 @@
       <arg name="initial_pose_a" value="0.97"/>
     </include>
   </group>
+
+  <!-- Run path planning -->
+  <!-- <node name="path_planning" pkg="chairbot_path_planning" type="path_planning.py" output="screen">
+  </node> -->
 </launch>

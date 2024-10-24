@@ -15,25 +15,11 @@
            -Y $(arg initial_pose_a)"
      respawn="false" />
 
-    <!-- Run robot state publisher -->
-    <!-- <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
-        <param name="publish_frequency" type="double" value="$(arg publish_frequency)" />
-        <param name="tf_prefix" value="$(arg tf_prefix)" />
-    </node> -->
-    
-
-    <!-- Include AMCL launch file -->
-    
-
     <!-- Include Navigation launch file -->
-    <include file="$(find chairbot_multi)/launch/navigation/navigation.launch">
+    <!-- <include file="$(find chairbot_multi)/launch/navigation/navigation.launch">
         <arg name="tf_prefix" value="$(arg tf_prefix)"/>
         <arg name="initial_pose_x" value="$(arg initial_pose_x)"/>
         <arg name="initial_pose_y" value="$(arg initial_pose_y)"/>
         <arg name="initial_pose_a" value="$(arg initial_pose_a)"/>
-    </include>
-
-    <!-- Run path planning -->
-    <node name="path_planning" pkg="chairbot_path_planning" type="path_planning.py" output="screen">
-    </node>
+    </include> -->
 </launch>
