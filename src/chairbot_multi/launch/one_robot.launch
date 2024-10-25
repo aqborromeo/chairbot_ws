@@ -6,6 +6,8 @@
     <arg name="initial_pose_a" default="0.0"/>
     <arg name="publish_frequency" default="50.0"/>
     <arg name="tf_prefix" default="$(arg robot_name)"/>
+    <arg name="model" default="$(env TURTLEBOT3_MODEL)" />
+
 
     <node name="spawn_chairbot_model" pkg="gazebo_ros" type="spawn_model"
      args="-urdf -param /robot_description -model $(arg robot_name)
@@ -15,11 +17,16 @@
            -Y $(arg initial_pose_a)"
      respawn="false" />
 
-    <!-- Include Navigation launch file -->
-    <!-- <include file="$(find chairbot_multi)/launch/navigation/navigation.launch">
-        <arg name="tf_prefix" value="$(arg tf_prefix)"/>
-        <arg name="initial_pose_x" value="$(arg initial_pose_x)"/>
-        <arg name="initial_pose_y" value="$(arg initial_pose_y)"/>
-        <arg name="initial_pose_a" value="$(arg initial_pose_a)"/>
-    </include> -->
+    <include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch">
+        <arg name="model" value="$(arg model)" />
+        <arg name="multi_robot_name" value="$(arg tf_prefix)" />
+    </include>
+
+    <!-- Run the map server -->
+     <!-- <arg name="map_file" default="$(find chairbot_multi)/maps/office_map2.yaml"/>
+
+    
+    <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" >
+        <param name="frame_id" value="map" />
+    </node> -->
 </launch>

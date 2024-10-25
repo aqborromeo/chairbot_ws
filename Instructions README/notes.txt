@@ -103,3 +103,134 @@ $ touch README.md
 $ touch path_planning.py
 $ chmod 755 path_planning.py
 ```
+
+
+
+
+
+
+
+rosnode info /tb3_0/amcl
+--------------------------------------------------------------------------------
+Node [/tb3_0/amcl]
+Publications:
+ * /diagnostics [diagnostic_msgs/DiagnosticArray]
+ * /rosout [rosgraph_msgs/Log]
+ * /tb3_0/amcl/parameter_descriptions [dynamic_reconfigure/ConfigDescription]
+ * /tb3_0/amcl/parameter_updates [dynamic_reconfigure/Config]
+ * /tb3_0/amcl_pose [geometry_msgs/PoseWithCovarianceStamped]
+ * /tb3_0/particlecloud [geometry_msgs/PoseArray]
+ * /tf [tf2_msgs/TFMessage]
+
+Subscriptions:
+ * /clock [rosgraph_msgs/Clock]
+ * /tb3_0/initialpose [unknown type]
+ * /tb3_0/map [unknown type]
+ * /tb3_0/scan [sensor_msgs/LaserScan]
+ * /tf [tf2_msgs/TFMessage]
+ * /tf_static [tf2_msgs/TFMessage]
+
+Services:
+ * /tb3_0/amcl/get_loggers
+ * /tb3_0/amcl/set_logger_level
+ * /tb3_0/amcl/set_parameters
+ * /tb3_0/global_localization
+ * /tb3_0/request_nomotion_update
+ * /tb3_0/set_map
+
+
+contacting node http://LAPTOP-C0DA23GU:42699/ ...
+Pid: 46110
+Connections:
+ * topic: /rosout
+    * to: /rosout
+    * direction: outbound (39787 - 127.0.0.1:52414) [31]
+    * transport: TCPROS
+ * topic: /tf
+    * to: /tb3_0/amcl
+    * direction: outbound
+    * transport: INTRAPROCESS
+ * topic: /tf
+    * to: /tb3_2/move_base
+    * direction: outbound (39787 - 127.0.0.1:52422) [11]
+    * transport: TCPROS
+ * topic: /tf
+    * to: /tb3_0/move_base
+    * direction: outbound (39787 - 127.0.0.1:52424) [18]
+    * transport: TCPROS
+ * topic: /tf
+    * to: /tb3_1/amcl
+    * direction: outbound (39787 - 127.0.0.1:52438) [38]
+    * transport: TCPROS
+ * topic: /tf
+    * to: /tb3_2/amcl
+    * direction: outbound (39787 - 127.0.0.1:52452) [12]
+    * transport: TCPROS
+ * topic: /tf
+    * to: /tb3_1/move_base
+    * direction: outbound (39787 - 127.0.0.1:52458) [13]
+    * transport: TCPROS
+ * topic: /tf
+    * to: /rviz
+    * direction: outbound (39787 - 127.0.0.1:52474) [17]
+    * transport: TCPROS
+ * topic: /clock
+    * to: /gazebo (http://LAPTOP-C0DA23GU:33295/)
+    * direction: inbound (33612 - LAPTOP-C0DA23GU:39257) [25]
+    * transport: TCPROS
+ * topic: /tf
+    * to: /tb3_0/amcl (http://LAPTOP-C0DA23GU:42699/)
+    * direction: inbound
+    * transport: INTRAPROCESS
+ * topic: /tf
+    * to: /tb3_0/robot_state_publisher (http://LAPTOP-C0DA23GU:39621/)
+    * direction: inbound (48512 - LAPTOP-C0DA23GU:47459) [22]
+    * transport: TCPROS
+ * topic: /tf
+    * to: /tb3_1/robot_state_publisher (http://LAPTOP-C0DA23GU:35813/)
+    * direction: inbound (34194 - LAPTOP-C0DA23GU:45655) [32]
+    * transport: TCPROS
+ * topic: /tf
+    * to: /tb3_2/robot_state_publisher (http://LAPTOP-C0DA23GU:44221/)
+    * direction: inbound (57352 - LAPTOP-C0DA23GU:57657) [33]
+    * transport: TCPROS
+ * topic: /tf
+    * to: /gazebo (http://LAPTOP-C0DA23GU:33295/)
+    * direction: inbound (33720 - LAPTOP-C0DA23GU:39257) [34]
+    * transport: TCPROS
+ * topic: /tf
+    * to: /tb3_0/map_to_base_footprint (http://LAPTOP-C0DA23GU:40149/)
+    * direction: inbound (47400 - LAPTOP-C0DA23GU:53551) [35]
+    * transport: TCPROS
+ * topic: /tf
+    * to: /tb3_1/map_to_base_footprint (http://LAPTOP-C0DA23GU:37183/)
+    * direction: inbound (47296 - LAPTOP-C0DA23GU:49397) [36]
+    * transport: TCPROS
+ * topic: /tf
+    * to: /tb3_2/map_to_base_footprint (http://LAPTOP-C0DA23GU:33255/)
+    * direction: inbound (54526 - LAPTOP-C0DA23GU:32813) [14]
+    * transport: TCPROS
+ * topic: /tf
+    * to: /tb3_1/amcl (http://LAPTOP-C0DA23GU:42513/)
+    * direction: inbound (60406 - LAPTOP-C0DA23GU:39243) [15]
+    * transport: TCPROS
+ * topic: /tf
+    * to: /tb3_2/amcl (http://LAPTOP-C0DA23GU:41475/)
+    * direction: inbound (46484 - LAPTOP-C0DA23GU:43489) [16]
+    * transport: TCPROS
+ * topic: /tf_static
+    * to: /tb3_0/robot_state_publisher (http://LAPTOP-C0DA23GU:39621/)
+    * direction: inbound (48524 - LAPTOP-C0DA23GU:47459) [37]
+    * transport: TCPROS
+ * topic: /tf_static
+    * to: /tb3_1/robot_state_publisher (http://LAPTOP-C0DA23GU:35813/)
+    * direction: inbound (34206 - LAPTOP-C0DA23GU:45655) [39]
+    * transport: TCPROS
+ * topic: /tf_static
+    * to: /tb3_2/robot_state_publisher (http://LAPTOP-C0DA23GU:44221/)
+    * direction: inbound (57366 - LAPTOP-C0DA23GU:57657) [40]
+    * transport: TCPROS
+ * topic: /tb3_0/scan
+    * to: /gazebo (http://LAPTOP-C0DA23GU:33295/)
+    * direction: inbound (33732 - LAPTOP-C0DA23GU:39257) [41]
+    * transport: TCPROS

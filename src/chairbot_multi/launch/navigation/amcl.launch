@@ -1,17 +1,18 @@
 <launch>
   <!-- Arguments -->
   <arg name="scan_topic"     default="scan"/>
+  <arg name="use_map_topic"   default="true"/>
   <arg name="initial_pose_x" default="1.00"/>
   <arg name="initial_pose_y" default="0.00"/>
   <arg name="initial_pose_a" default="0.00"/>
   <arg name="tf_prefix" default=""/>
 
-  <arg name="odom_frame_id"   default="/$(arg tf_prefix)/odom"/>
-  <arg name="base_frame_id"   default="/$(arg tf_prefix)/base_footprint"/>
-  <arg name="global_frame_id" default="/map"/>
+  <arg name="odom_frame_id"   default="$(arg tf_prefix)/odom"/>
+  <arg name="base_frame_id"   default="$(arg tf_prefix)/base_footprint"/>
+  <arg name="global_frame_id" default="map"/>
 
   <!-- AMCL -->
-  <node pkg="amcl" type="amcl" name="$(arg tf_prefix)_amcl">
+  <node pkg="amcl" type="amcl" name="amcl">
     <param name="use_map_topic"             value="$(arg use_map_topic)"/>
     <!-- Publish scans from best pose at a max of 10 Hz -->
     <param name="odom_model_type"           value="diff"/>
@@ -50,10 +51,11 @@
     <param name="initial_pose_x"            value="$(arg initial_pose_x)"/>
     <param name="initial_pose_y"            value="$(arg initial_pose_y)"/>
     <param name="initial_pose_a"            value="$(arg initial_pose_a)"/>
-    <remap from="scan"                      to="$(arg scan_topic)"/>
+    <remap from="scan"                      to="/$(arg tf_prefix)/$(arg scan_topic)"/>
+    <remap from="/map"                      to="/$(arg tf_prefix)/map"/>
     <remap from="initialpose"               to="/$(arg tf_prefix)/initialpose"/>
     <remap from="amcl_pose"                 to="/$(arg tf_prefix)/amcl_pose"/>
     <remap from="particlecloud"             to="/$(arg tf_prefix)/particlecloud"/>
-    
+
   </node>
 </launch>
