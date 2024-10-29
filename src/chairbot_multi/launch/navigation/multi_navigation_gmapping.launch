@@ -4,6 +4,7 @@
   <arg name="open_rviz" default="true"/>
 
   <arg name="map_file" default="$(find chairbot_multi)/maps/office_map2.yaml"/>
+  <arg name="rviz_config" default="$(find chairbot_multi)/rviz/chairbot_multi_gmapping_confroom.yaml"/>
 
 
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" >
@@ -14,7 +15,7 @@
   <group ns="tb3_0">
     <param name="tf_prefix" value="tb3_0" />
     
-    <include file="$(find chairbot_multi)/launch/navigation/amcl.launch">
+    <include file="$(find chairbot_multi)/launch/navigation/gmapping.launch">
       <arg name="tf_prefix" value="tb3_0"/>
       <arg name="initial_pose_x" value="1.22"/>
       <arg name="initial_pose_y" value="6.03"/>
@@ -28,7 +29,7 @@
   <group ns="tb3_1">
     <param name="tf_prefix" value="tb3_1" />
     
-    <include file="$(find chairbot_multi)/launch/navigation/amcl.launch">
+    <include file="$(find chairbot_multi)/launch/navigation/gmapping.launch">
       <arg name="tf_prefix" value="tb3_1"/>
       <arg name="initial_pose_x" value="8.28"/>
       <arg name="initial_pose_y" value="6.40"/>
@@ -42,7 +43,7 @@
   <group ns="tb3_2">  
     <param name="tf_prefix" value="tb3_2" />
 
-    <include file="$(find chairbot_multi)/launch/navigation/amcl.launch">
+    <include file="$(find chairbot_multi)/launch/navigation/gmapping.launch">
       <arg name="tf_prefix" value="tb3_2"/>
       <arg name="initial_pose_x" value="7.99"/>
       <arg name="initial_pose_y" value="8.82"/>
@@ -55,6 +56,6 @@
 
   <group if="$(arg open_rviz)"> 
     <node pkg="rviz" type="rviz" name="rviz" required="true"
-      args="-d $(find chairbot_navigation)/rviz/chairbot_navigation.rviz"/>
+      args="-d $(find chairbot_multi)/rviz/$(arg rviz_config).rviz"/>
   </group>
 </launch>

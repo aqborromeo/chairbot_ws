@@ -86,5 +86,5 @@
     <remap from="/move_base_simple/goal"                                           to="/$(arg tf_prefix)/move_base_simple/goal" />
   </node>
 
-  <node pkg="tf" type="static_transform_publisher" name="map_to_base_footprint" args="0 0 0 0 0 0 map $(arg tf_prefix)/odom 50"/>
+  <node pkg="tf" type="static_transform_publisher" name="map_to_base_footprint" args="0 0 0 0 0 0 map $(arg tf_prefix)/map 50"/>
 </launch>
