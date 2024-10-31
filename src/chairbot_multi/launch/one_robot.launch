@@ -10,7 +10,7 @@
 
 
     <node name="spawn_chairbot_model" pkg="gazebo_ros" type="spawn_model"
-     args="-urdf -param /robot_description -model $(arg robot_name)
+     args="-urdf -param robot_description -model $(arg robot_name)
            -x $(arg initial_pose_x) 
            -y $(arg initial_pose_y) 
            -z $(arg initial_pose_z) 
@@ -29,4 +29,34 @@
     <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" >
         <param name="frame_id" value="map" />
     </node> -->
+
+    <!-- Include the gmapping launch file -->
+    <include file="$(find chairbot_multi)/launch/navigation/gmapping.launch">
+        <arg name="tf_prefix" value="$(arg tf_prefix)"/>
+    </include>
+
+    <!-- <group ns="/$(arg tf_prefix)/map_merge">
+        <param name="init_pose_x" value="$(arg initial_pose_x)"/>
+        <param name="init_pose_y" value="$(arg initial_pose_y)"/>
+        <param name="init_pose_z" value="$(arg initial_pose_z)"/>
+        <param name="init_pose_yaw" value="$(arg initial_pose_a)"/>
+        <param name="init_pose_x" value="0.0"/>
+        <param name="init_pose_y" value="0.0"/>
+        <param name="init_pose_z" value="0.0"/>
+        <param name="init_pose_yaw" value="0.0"/>
+    </group> -->
+
+
+    <include file="$(find ros_multi_tb3)/launch/includes/move_base.launch">
+      <arg name="model" value="$(arg model)" />
+      <arg name="move_forward_only" value="false"/>
+      <arg name="cmd_vel_topic" value="/$(arg tf_prefix)/cmd_vel"/>
+      <arg name="namespace" value="$(arg tf_prefix)"/>
+    </include>
+
+    <!-- <include file="$(find chairbot_multi)/launch/move_base.launch">
+      <arg name="tf_prefix" value="$(arg tf_prefix)"/>
+    </include> -->
+
+    <node pkg="tf" type="static_transform_publisher" name="world_to_$(arg tf_prefix)_tf_broadcaster"  args="0 0 0 0 0 0 /map /$(arg tf_prefix)/map 20"/>
 </launch>

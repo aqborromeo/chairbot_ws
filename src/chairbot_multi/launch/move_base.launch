@@ -13,7 +13,8 @@
   <arg name="global_frame_id" default="map"/>
   <arg name="odom_topic" default="/$(arg tf_prefix)/odom" />
   <arg name="laser_topic" default="/$(arg tf_prefix)/scan" />
-  <arg name="custom_param_file" default="$(find chairbot_multi)/param/dummy.yaml"/>
+  <arg name="cmd_vel_topic" default="$(arg tf_prefix)/cmd_vel" />
+  <arg name="custom_param_file" default="$(find chairbot_multi)/param/move_base_params.yaml"/>
   
   <!-- move_base -->
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
@@ -34,6 +35,9 @@
     <param name="local_costmap/global_frame" value="$(arg odom_frame_id)"/>
     <param name="local_costmap/robot_base_frame" value="$(arg base_frame_id)"/>
     <param name="DWAPlannerROS/global_frame_id" value="$(arg odom_frame_id)"/>
+    <param name="local_costmap/obstacle_layer/scan/timeout" value="0.2"/>
+    <param name="local_costmap/obstacle_layer/scan/inflation_radius" value="0.55"/>
+    <param name="local_costmap/obstacle_layer/scan/topic" value="/$(arg tf_prefix)/scan"/>
 
     <remap from="/map" to="/$(arg tf_prefix)/map"/>
     <remap from="cmd_vel" to="/$(arg tf_prefix)/cmd_vel"/>
@@ -86,5 +90,5 @@
     <remap from="/move_base_simple/goal"                                           to="/$(arg tf_prefix)/move_base_simple/goal" />
   </node>
 
-  <node pkg="tf" type="static_transform_publisher" name="map_to_base_footprint" args="0 0 0 0 0 0 map $(arg tf_prefix)/map 50"/>
+  <!-- <node pkg="tf" type="static_transform_publisher" name="map_to_base_footprint" args="0 0 0 0 0 0 map $(arg tf_prefix)/map 50"/> -->
 </launch>

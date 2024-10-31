@@ -20,9 +20,6 @@
       <arg name="initial_pose_y" value="6.03"/>
       <arg name="initial_pose_a" value="0.00"/>
     </include>
-    <include file="$(find chairbot_multi)/launch/navigation/move_base.launch">
-      <arg name="tf_prefix" value="tb3_0"/>
-    </include>
   </group>
 
   <group ns="tb3_1">
@@ -34,9 +31,6 @@
       <arg name="initial_pose_y" value="6.40"/>
       <arg name="initial_pose_a" value="-0.01"/>
     </include>
-    <include file="$(find chairbot_multi)/launch/navigation/move_base.launch">
-      <arg name="tf_prefix" value="tb3_1"/>
-    </include>  
   </group>
 
   <group ns="tb3_2">  
@@ -48,9 +42,6 @@
       <arg name="initial_pose_y" value="8.82"/>
       <arg name="initial_pose_a" value="0.97"/>
     </include>
-    <include file="$(find chairbot_multi)/launch/navigation/move_base.launch">
-      <arg name="tf_prefix" value="tb3_2"/>
-    </include>  
   </group>
 
   <group if="$(arg open_rviz)"> 

@@ -17,7 +17,7 @@ Panels:
         - /tb3_1_goal1
         - /tb3_2_goal1
       Splitter Ratio: 0.5
-    Tree Height: 617
+    Tree Height: 149
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -33,10 +33,9 @@ Panels:
     Name: Views
     Splitter Ratio: 0.5
   - Class: rviz/Time
-    Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: tb3_1 camera
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -91,6 +90,8 @@ Visualization Manager:
       Value: true
     - Class: rviz/TF
       Enabled: false
+      Filter (blacklist): ""
+      Filter (whitelist): ""
       Frame Timeout: 15
       Frames:
         All Enabled: false
@@ -111,6 +112,7 @@ Visualization Manager:
       Name: robot_tb3_1
       Radius: 0.05000000074505806
       Reference Frame: tb3_1/odom
+      Show Trail: false
       Value: true
     - Alpha: 1
       Class: rviz/Axes
@@ -119,6 +121,7 @@ Visualization Manager:
       Name: robot_tb3_2
       Radius: 0.05000000074505806
       Reference Frame: tb3_2/odom
+      Show Trail: false
       Value: true
     - Alpha: 1
       Class: rviz/Axes
@@ -127,6 +130,7 @@ Visualization Manager:
       Name: robot_tb3_0
       Radius: 0.05000000074505806
       Reference Frame: tb3_0/odom
+      Show Trail: false
       Value: true
     - Class: rviz/Marker
       Enabled: true
@@ -341,7 +345,7 @@ Visualization Manager:
       Marker Topic: /centroids
       Name: valid_Frontier
       Namespaces:
-        markers3: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/Marker
@@ -349,7 +353,7 @@ Visualization Manager:
       Marker Topic: /tb3_1_rrt_detector_shapes
       Name: tb3_1 detector
       Namespaces:
-        markers: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/Marker
@@ -357,7 +361,7 @@ Visualization Manager:
       Marker Topic: /tb3_2_rrt_detector_shapes
       Name: tb3_2 detector
       Namespaces:
-        markers: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/Marker
@@ -365,7 +369,7 @@ Visualization Manager:
       Marker Topic: /tb3_0_rrt_detector_shapes
       Name: tb3_0 detector
       Namespaces:
-        markers: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/Marker
@@ -373,11 +377,11 @@ Visualization Manager:
       Marker Topic: /global_rrt_detector_shapes
       Name: global detector
       Namespaces:
-        markers: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/Camera
-      Enabled: false
+      Enabled: true
       Image Rendering: background and overlay
       Image Topic: /tb3_1/camera/rgb/image_raw
       Name: tb3_1 camera
@@ -385,12 +389,12 @@ Visualization Manager:
       Queue Size: 2
       Transport Hint: raw
       Unreliable: false
-      Value: false
+      Value: true
       Visibility:
-        "": true
         Grid: true
         Marker: true
         MarkerArray: true
+        Odometry: true
         Odometry_tb3_0: true
         Odometry_tb3_1: true
         Odometry_tb3_2: true
@@ -453,10 +457,10 @@ Visualization Manager:
       Unreliable: false
       Value: false
       Visibility:
-        "": true
         Grid: true
         Marker: true
         MarkerArray: true
+        Odometry: true
         Odometry_tb3_0: true
         Odometry_tb3_1: true
         Odometry_tb3_2: true
@@ -509,7 +513,7 @@ Visualization Manager:
         valid_Frontier: true
       Zoom Factor: 1
     - Class: rviz/Camera
-      Enabled: false
+      Enabled: true
       Image Rendering: background and overlay
       Image Topic: /tb3_0/camera/rgb/image_raw
       Name: tb3_0 camera
@@ -517,12 +521,12 @@ Visualization Manager:
       Queue Size: 2
       Transport Hint: raw
       Unreliable: false
-      Value: false
+      Value: true
       Visibility:
-        "": true
         Grid: true
         Marker: true
         MarkerArray: true
+        Odometry: true
         Odometry_tb3_0: true
         Odometry_tb3_1: true
         Odometry_tb3_2: true
@@ -857,6 +861,7 @@ Visualization Manager:
       Name: tb3_1_axes
       Radius: 0.10000000149011612
       Reference Frame: tb3_1/base_footprint
+      Show Trail: false
       Value: true
     - Alpha: 1
       Class: rviz/Axes
@@ -865,6 +870,7 @@ Visualization Manager:
       Name: tb3_2_axes
       Radius: 0.10000000149011612
       Reference Frame: tb3_2/base_footprint
+      Show Trail: false
       Value: true
     - Alpha: 1
       Class: rviz/Axes
@@ -873,6 +879,7 @@ Visualization Manager:
       Name: tb3_0_axes
       Radius: 0.10000000149011612
       Reference Frame: tb3_0/base_footprint
+      Show Trail: false
       Value: true
     - Alpha: 0.10000000149011612
       Class: rviz/Map
@@ -1168,7 +1175,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 30.341970443725586
+      Distance: 11.943154335021973
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -1176,25 +1183,25 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 0.10394957661628723
-        Y: -0.27567607164382935
-        Z: -0.08147823065519333
+        X: 0.9291381239891052
+        Y: 2.0035974979400635
+        Z: 0.19653603434562683
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.5647963285446167
+      Pitch: 0.8647963404655457
       Target Frame: <Fixed Frame>
-      Yaw: 3.1436004638671875
+      Yaw: 2.913599967956543
     Saved: ~
 Window Geometry:
   Displays:
-    collapsed: true
+    collapsed: false
   Height: 953
-  Hide Left Dock: true
+  Hide Left Dock: false
   Hide Right Dock: true
-  QMainWindow State: 000000ff00000000fd000000040000000000000290000002fdfc020000000ffb0000001200530065006c0065006300740069006f006e00000001e10000009b0000006800fffffffb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c0061007900730000000044000002fd000000e400fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007300000003ec000000f50000006800fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb00000018007400620033005f0031002000630061006d00650072006100000002c6000000ba0000001800fffffffb00000018007400620033005f0032002000630061006d00650072006100000002e9000000970000001800fffffffb00000018007400620033005f0033002000630061006d00650072006100000003040000007c0000000000000000fb00000018007400620033005f0033002000630061006d006500720061000000040a000000d70000000000000000fb00000018007400620033005f0032002000630061006d006500720061000000042d000000b40000000000000000fb00000018007400620033005f0031002000630061006d00650072006100000004450000009c0000000000000000fb00000018007400620033005f0030002000630061006d006500720061000000040b000000d60000001800ffffff000000010000010f00000252fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000002800000252000000ba00fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e100000197000000030000058000000051fc0100000002fb0000000800540069006d00650100000000000005800000034800fffffffb0000000800540069006d0065010000000000000450000000000000000000000580000002fd00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000400000000000002900000030cfc020000000ffb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003b00000120000000c700fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007300000003ec000000f50000005c00fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb00000018007400620033005f0031002000630061006d0065007200610100000161000000ba0000001600fffffffb00000018007400620033005f0032002000630061006d00650072006100000002e9000000970000001600fffffffb00000018007400620033005f0033002000630061006d00650072006100000003040000007c0000000000000000fb00000018007400620033005f0033002000630061006d006500720061000000040a000000d70000000000000000fb00000018007400620033005f0032002000630061006d006500720061000000042d000000b40000000000000000fb00000018007400620033005f0031002000630061006d00650072006100000004450000009c0000000000000000fb00000018007400620033005f0030002000630061006d0065007200610100000221000001260000001600ffffff000000010000010f00000252fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000002800000252000000a000fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e100000197000000030000058000000051fc0100000002fb0000000800540069006d00650100000000000005800000030700fffffffb0000000800540069006d00650100000000000004500000000000000000000002ea0000030c00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
@@ -1204,8 +1211,8 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 1408
-  X: 85
-  Y: 32
+  X: 53
+  Y: 0
   tb3_0 camera:
     collapsed: false
   tb3_1 camera:
