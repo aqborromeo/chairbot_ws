@@ -6,7 +6,7 @@ from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 from sensor_msgs.msg import LaserScan
 from geometry_msgs.msg import Twist
 
-class TurtleBot3PathPlanner:
+class ChairbotPathPlanner:
     def __init__(self, robot_name, waypoints):
         # Store the robot name and unique waypoints
         self.robot_name = robot_name
@@ -91,13 +91,13 @@ if __name__ == '__main__':
         robot_data = {
             'tb3_0': [(2.0, 2.0, 1.0), (0.0, 3.0, 1.0), (-2.0, 0.0, 1.0)],
             'tb3_1': [(1.0, 1.0, 1.0), (1.0, -2.0, 1.0), (-1.0, -3.0, 1.0)],
-            'tb3_2': [(1.0, 1.0, 1.0), (1.0, -2.0, 1.0), (-1.0, -3.0, 1.0)]
+            'tb3_': [(1.0, 1.0, 1.0), (1.0, -2.0, 1.0), (-1.0, -3.0, 1.0)]
         }
 
         # Create a planner for each robot with its own waypoints
         planners = []
         for robot_name, waypoints in robot_data.items():
-            planner = TurtleBot3PathPlanner(robot_name, waypoints)
+            planner = ChairbotPathPlanner(robot_name, waypoints)
             planners.append(planner)
 
         # Run the planners concurrently

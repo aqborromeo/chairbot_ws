@@ -12,4 +12,4 @@ $ git clone https://github.com/aqborromeo/chairbot_ws.git
 
 3. Build the packages in the catkin workspace:
 
-$ cd ~/catkin_ws && catkin_make
+$ cd ~/chairbot && catkin_make
