@@ -168,9 +168,9 @@ def movebase_multi(robot, target):
 # If the python node is executed as main process (sourced directly)
 if __name__ == '__main__':
     targets = [
-      [(3.0,6.0,0.00),(0, 0, 0, 1)], 
-      [(5.0,6.0,0.00),(0, 0, 0, 1)], 
-      [(7.0,6.0,0.00),(0, 0, 0, 1)]
+      [(3.0,6.0,0.00),(0, 0, 0.75, 1)], 
+      [(5.0,6.0,0.00),(0, 0, 0.75, 1)], 
+      [(7.0,6.0,0.00),(0, 0, 0.75, 1)]
       ]
     
     try:
@@ -182,19 +182,19 @@ if __name__ == '__main__':
         odom_sub_tb3_2 = rospy.Subscriber('/tb3_2/odom', Odometry, tb3_2_pos) 
 
         # result = movebase_client()
-        # result = movebase_multi('tb3_0',targets[0])
-        # if result:
-        #     rospy.loginfo("tb3_0 Goal execution done!")
-        # result = movebase_multi('tb3_1',targets[1])
-        # if result:
-        #     rospy.loginfo("tb3_1 Goal execution done!")
-        # result = movebase_multi('tb3_2',targets[2])
-        # if result:
-        #     rospy.loginfo("tb3_2 Goal execution done!")
+        result = movebase_multi('tb3_0',targets[0])
+        if result:
+            rospy.loginfo("tb3_0 Goal execution done!")
+        result = movebase_multi('tb3_1',targets[1])
+        if result:
+            rospy.loginfo("tb3_1 Goal execution done!")
+        result = movebase_multi('tb3_2',targets[2])
+        if result:
+            rospy.loginfo("tb3_2 Goal execution done!")
 
-        move_to_waypoint('tb3_0')
-        move_to_waypoint('tb3_1')
-        move_to_waypoint('tb3_2')
+        # move_to_waypoint('tb3_0')
+        # move_to_waypoint('tb3_1')
+        # move_to_waypoint('tb3_2')
         
         
     except rospy.ROSInterruptException:
