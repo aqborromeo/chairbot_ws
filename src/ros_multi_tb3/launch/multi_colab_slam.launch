@@ -15,14 +15,16 @@
     <param name="world_frame" value="world"/>
     <param name="known_init_poses" value="true"/>
     <param name="merging_rate" value="3.0"/>
-    <!-- <param name="merging_rate" value="0.1"/> -->
+    <param name="merging_rate" value="0.1"/>
     <param name="discovery_rate" value="0.02"/>
     <param name="estimation_rate" value="0.6"/>
     <param name="estimation_confidence" value="0.6"/>
   </node>
 
   <!-- ################################################################################################# -->
-  <node pkg="tf" type="static_transform_publisher" name="world_to_mergedmap_tf_broadcaster"  args="0.5 0.5 0 -0.2 0 0 world map 20"/>
+  <!-- <node pkg="tf" type="static_transform_publisher" name="world_to_mergedmap_tf_broadcaster"  args="0.5 0.5 0 -0.2 0 0 world map 20"/> -->
+
+  <node pkg="tf" type="static_transform_publisher" name="world_to_mergedmap_tf_broadcaster"  args="0 0 0 0 0 0 world map 20"/>
 
   <!-- ################################################################################################# -->
   <!-- rviz -->

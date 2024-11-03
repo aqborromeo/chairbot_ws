@@ -9,7 +9,9 @@
   <node pkg="map_server" type="map_server" name="map_server" args="$(arg map_file)" output="screen" />
 
   <!-- AMCL -->
-  <include file="$(find chairbot_navigation)/launch/amcl.launch"/>
+  <include file="$(find chairbot_navigation)/launch/amcl.launch">
+    <arg name="multi_robot_name" default="robot1" />
+  </include>
 
   <!-- move_base -->
   <include file="$(find chairbot_navigation)/launch/move_base.launch">

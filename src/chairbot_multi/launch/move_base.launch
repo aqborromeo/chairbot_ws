@@ -38,6 +38,7 @@
     <param name="local_costmap/obstacle_layer/scan/timeout" value="0.2"/>
     <param name="local_costmap/obstacle_layer/scan/inflation_radius" value="0.55"/>
     <param name="local_costmap/obstacle_layer/scan/topic" value="/$(arg tf_prefix)/scan"/>
+    <param name="/move_base/global_costmap/obstacle_layer/scan/sensor_frame" value="$(arg tf_prefix)/base_scan" />
 
     <remap from="/map" to="/$(arg tf_prefix)/map"/>
     <remap from="cmd_vel" to="/$(arg tf_prefix)/cmd_vel"/>
@@ -72,6 +73,7 @@
     <remap from="/move_base/global_costmap/obstacle_layer/clearing_endpoints"      to="/$(arg tf_prefix)/move_base/global_costmap/obstacle_layer/clearing_endpoints" />
     <remap from="/move_base/global_costmap/obstacle_layer/parameter_descriptions"  to="/$(arg tf_prefix)/move_base/global_costmap/obstacle_layer/parameter_descriptions" />
     <remap from="/move_base/global_costmap/obstacle_layer/parameter_updates"       to="/$(arg tf_prefix)/move_base/global_costmap/obstacle_layer/parameter_updates" />
+
     <remap from="/move_base/global_costmap/parameter_descriptions"                 to="/$(arg tf_prefix)/move_base/global_costmap/parameter_descriptions" />
     <remap from="/move_base/global_costmap/parameter_updates"                      to="/$(arg tf_prefix)/move_base/global_costmap/parameter_updates" />
     <remap from="/move_base/global_costmap/static_layer/parameter_descriptions"    to="/$(arg tf_prefix)/move_base/global_costmap/static_layer/parameter_descriptions" />
@@ -90,5 +92,5 @@
     <remap from="/move_base_simple/goal"                                           to="/$(arg tf_prefix)/move_base_simple/goal" />
   </node>
 
-  <!-- <node pkg="tf" type="static_transform_publisher" name="map_to_base_footprint" args="0 0 0 0 0 0 map $(arg tf_prefix)/map 50"/> -->
+  <node pkg="tf" type="static_transform_publisher" name="map_to_base_footprint" args="0 0 0 0 0 0 map $(arg tf_prefix)/map 50"/>
 </launch>
