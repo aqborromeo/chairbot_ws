@@ -6,7 +6,7 @@ Chairbot utilizes multiple TurtleBot3 Waffle Pi robots and applies ROS packages 
 
 $ source ~/chairbot_ws/src/chairbots/src/chairbots_meeting_room.sh
 
-## Testing and Evaluation
+# Testing and Evaluation
 
 ### Single Chair
 $ source ~/chairbot_ws/src/chairbots/src/chairbot_single.sh 
