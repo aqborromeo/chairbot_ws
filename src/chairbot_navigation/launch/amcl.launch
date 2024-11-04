@@ -1,27 +1,10 @@
 <launch>
-  <!-- Argument to be added to the top of the launch file-->
-  <arg name="multi_robot_name" default="" doc="User assigned robot namespace."/>
-  <arg name="map_file" default="$(find chairbot_navigation)/maps/office_map2.yaml"/>
- 
-  <!-- Existing lines with robot name references in red-->
-  <group ns="$(arg multi_robot_name)">
-    <node pkg="amcl" type="amcl" name="amcl">
-      <remap from="scan" to="$(arg multi_robot_name)/$(arg scan_topic)"/>
-      <remap from="initialpose" to="$(arg multi_robot_name)/initialpose"/>
-      <remap from="amcl_pose" to="$(arg multi_robot_name)/amcl_pose"/>
-      <remap from="particlecloud" to="$(arg multi_robot_name)/particlecloud"/>
-      <param name="odom_frame_id" value="$(arg multi_robot_name)/odom"/>
-      <param name="base_frame_id" value="$(arg multi_robot_name)/base_footprint"/>
-    </node>
-  </group>
-
   <!-- Arguments -->
   <arg name="scan_topic"     default="scan"/>
   <arg name="initial_pose_x" default="1.22"/>
   <arg name="initial_pose_y" default="6.03"/>
   <arg name="initial_pose_a" default="-0.00"/>
 
-  
   <!-- AMCL -->
   <node pkg="amcl" type="amcl" name="amcl">
 
@@ -60,8 +43,4 @@
     <param name="base_frame_id"             value="base_footprint"/>
 
   </node>
-
-  <!-- Map server -->
-  <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
-
 </launch>

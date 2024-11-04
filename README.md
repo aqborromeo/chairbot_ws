@@ -54,8 +54,23 @@ The path planning system of the TurtleBot3 Waffle Pi is responsible for generati
 
 ![chairbot_path_planning](https://github.com/aqborromeo/chairbot_ws/blob/main/Instructions%20README/6.%20Experiment_Path_Planning)
 
-## Chairbot:
+## Multi_Chairbot
 
-UNDER CONSTRUCTION
+![multi_chairbot](https://github.com/aqborromeo/chairbot_ws/blob/main/Instructions%20README/7.%20Experiment_Multi_Chairbot)
+This experiment will use a phython script for multiple turtlebot3 waffle pi to run, simulating chairs arranging themselves sequentially.
 
-![chairbot](https://github.com/aqborromeo/chairbot_ws/blob/main/Instructions%20README/7.%20Chairbot%20(Self%20Organizing%20Chair)%20)
+## Chairbots:
+
+Chairbot utilizes multiple TurtleBot3 Waffle Pi robots and applies ROS packages developed through extensive experimentation with simulation, localization, navigation, and path planning. The system enables multiple TurtleBots to autonomously park at specified waypoints simultaneously. This setup is achieved with a Python script that coordinates the movement of multiple TurtleBot3s, simulating a self-arranging chair setup.
+
+![chairbot](https://github.com/aqborromeo/chairbot_ws/blob/main/Instructions%20README/8.%20Chairbot)
+
+## CREDITS / PROJECT CONTRIBUTION
+
+| Official Full Name  | Student ID (MTech Applicable)  | Work Items (Who Did What) | Email (Optional) |
+| :------------ |:---------------:| :-----| :-----|
+| Borromeo, Angelie Quiapo | A0270177A | Developer| e1117041@u.nus.edu |
+| Chua Jack Yune | A0269363U | Architect | e1112234@u.nus.edu |
+| Fong Zhi En Kelvin | A0269639H | Developer| e1112236@u.nus.edu |
+| Toh Zhi Yuan | A0165226H | Project Coordinator and Vision System Developer| e1112238@u.nus.edu |
+---

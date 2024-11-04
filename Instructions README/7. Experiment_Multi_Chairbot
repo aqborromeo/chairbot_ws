@@ -39,5 +39,7 @@ $ roslaunch multi_chairbot multi_chair_rviz.launch
 ## Running Self arranging
 1. Open terminal and rosrun python file
 ```
+$ chmod 755 ~/chairbot_ws/src/multi_chairbot/src/test_path.py
+$ sudo ln -s /usr/bin/python3 /usr/bin/python
 $ rosrun multi_chairbot test_path.py 
 ```

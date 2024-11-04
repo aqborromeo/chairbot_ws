@@ -41,6 +41,8 @@ NOTE: Refer to the main Readme.md file for description of each package.
 
 ## Navigation
 
+    NOTE: if you are using the old map set in chairbot_navigation.launch and not the map you generated update ensure to update the path in office_map2.pgm
+
     1. In a terminal Launch the world and robot
 
     $ source ~/chairbot_ws/devel/setup.bash
@@ -53,7 +55,7 @@ NOTE: Refer to the main Readme.md file for description of each package.
 
     3. Go to rviz and test the navigation by clicking "2D Post Estinamate" and "2D Nav Goal".
 
-# SLAM for Multiple toolButtonStyle
+# SLAM for Multiple ---- THIS IS STILL UNDERCONSTUCTION
 
     1. Install the map-merge package
     $ sudo apt-get install ros-noetic-multirobot-map-merge 

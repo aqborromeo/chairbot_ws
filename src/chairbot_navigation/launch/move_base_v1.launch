@@ -1,0 +1,20 @@
+<launch>
+  <!-- Argument to be added to the top of the launch file-->
+  <arg name="multi_robot_name"/>
+  <group ns="$(arg multi_robot_name)">
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+      <!-- Set tf_prefix for frames explicitly, overwriting defaults-->
+      <param name="global_costmap/scan/sensor_frame" value="$(arg multi_robot_name)/base_scan"/>
+      <param name="global_costmap/obstacle_layer/scan/sensor_frame" value="$(arg multi_robot_name)/base_scan"/>
+      <param name="global_costmap/global_frame" value="map"/>
+      <param name="global_costmap/robot_base_frame" value="$(arg multi_robot_name)/base_footprint"/>
+      <param name="local_costmap/scan/sensor_frame" value="$(arg multi_robot_name)/base_scan"/>
+      <param name="local_costmap/obstacle_layer/scan/sensor_frame" value="$(arg multi_robot_name)/base_scan"/>
+      <param name="local_costmap/global_frame" value="$(arg multi_robot_name)/odom"/>
+      <param name="local_costmap/robot_base_frame" value="$(arg multi_robot_name)/base_footprint"/>
+
+      <!-- Centralized map server-->
+      <remap from="map" to="/map"/>
+    </node>
+  </group>
+</launch>
