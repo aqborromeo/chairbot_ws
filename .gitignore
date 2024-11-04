@@ -5,8 +5,8 @@
 
 
 # Underconstruction
-chairbot_ws/src/chairbot
-chairbot_ws/src/chairbot_path_planning
+# chairbot_ws/src/chairbot
+# chairbot_ws/src/chairbot_path_planning
 
 # Chaibot workspace
 .catkin_workspace
@@ -17,17 +17,17 @@ src/CMakeLists.txt
 
 #Simulation
 #src/chairbot_simulation/CMakeLists.txt
-src/chairbot_simulation/package.xml
+#src/chairbot_simulation/package.xml
 #src/chairbot_simulation/src/CMakeLists.txt
 
 #Localization
 #src/chairbot_localization/CMakeLists.txt
-src/chairbot_localization/package.xml
+#src/chairbot_localization/package.xml
 #src/chairbot_localization/src/CMakeLists.txt
 
 #Localization
 #src/chairbot_navigation/CMakeLists.txt
-src/chairbot_navigation/package.xml
+#src/chairbot_navigation/package.xml
 #src/chairbot_navigation/src/CMakeLists.txt
 
 # Compiled Object files
