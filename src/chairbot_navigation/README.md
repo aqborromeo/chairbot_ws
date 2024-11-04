@@ -66,52 +66,68 @@ $ roslaunch chairbot_navigation single_chair.launch
 ```
 $ source ~/chairbot_ws/devel/setup.bash
 $ roslaunch chairbot_navigation chairbot_navigation.launch map_file:=$HOME/chairbot_ws/src/chairbot_navigation/maps/office_map2.yaml
+```
 
 3. Go to rviz and test the navigation by clicking "2D Post Estinamate" and "2D Nav Goal".
+
 
 ## Structure
 ```
 .
 ├── CMakeLists.txt
-├── README.md
 ├── config
 │   └── gmapping_params.yaml
-├── include
-│   └── chairbot_navigation
 ├── launch
 │   ├── amcl.launch
-│   ├── chairbot_navigation.launch
+│   ├── amcl_v1.launch
 │   ├── chairbot_navigation_gmapping.launch
+│   ├── chairbot_navigation.launch
 │   ├── chairbot_navigation_slam.launch
+│   ├── chairbots.launch
 │   ├── move_base.launch
+│   ├── move_base_v1.launch
+│   ├── multi_chairbot.launch
+│   ├── multi_chair_rviz.launch
+│   ├── one_robot_v2.launch
+│   ├── robot1_amcl.launch
+│   ├── robot1_navigation.launch
+│   ├── robot2_amcl.launch
+│   ├── robot2_navigation.launch
+│   ├── robot3_amcl.launch
+│   ├── robot3_navigation.launch
 │   └── single_chair.launch
 ├── maps
-│   ├── office_map.pgm
-│   ├── office_map.yaml
 │   ├── office_map1.pgm
 │   ├── office_map1.yaml
 │   ├── office_map2.pgm
-│   └── office_map2.yaml
-├── models
+│   ├── office_map2.yaml
+│   ├── office_map.pgm
+│   └── office_map.yaml
 ├── package.xml
 ├── param
+│   ├── amcl_params.yaml
 │   ├── base_local_planner_params.yaml
 │   ├── costmap_common_params_waffle_pi.yaml
 │   ├── dwa_local_planner_params_waffle_pi.yaml
 │   ├── global_costmap_params.yaml
 │   ├── local_costmap_params.yaml
 │   └── move_base_params.yaml
+├── README.md
 ├── rviz
-│   ├── chairbot_navigation.rviz
-│   ├── chairbot_navigation_gmapping.rviz
-│   ├── chairbot_navigation_gmapping_confroom.rviz
 │   ├── chairbot_navigation_gmapping_confroom1.rviz
 │   ├── chairbot_navigation_gmapping_confroom2.rviz
+│   ├── chairbot_navigation_gmapping_confroom.rviz
+│   ├── chairbot_navigation_gmapping.rviz
+│   ├── chairbot_navigation_multi.rviz
+│   ├── chairbot_navigation.rviz
+│   ├── chairbots_navigation.rviz
 │   └── single_chair_model.rviz
-├── src
 ├── urdf
 │   ├── turtlebot3_waffle.gazebo.xacro
 │   └── turtlebot3_waffle_pi.urdf.xacro
 └── worlds
     └── office2.world
+
+7 directories, 46 files
+
 ```
