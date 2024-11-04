@@ -64,8 +64,9 @@ This experiment will use a phython script for multiple turtlebot3 waffle pi to r
 Chairbot utilizes multiple TurtleBot3 Waffle Pi robots and applies ROS packages developed through extensive experimentation with simulation, localization, navigation, and path planning. The system enables multiple TurtleBots to autonomously park at specified waypoints simultaneously. This setup is achieved with a Python script that coordinates the movement of multiple TurtleBot3s, simulating a self-arranging chair setup.
 
 ![chairbot](https://github.com/aqborromeo/chairbot_ws/blob/main/Instructions%20README/8.%20Chairbot)
+![TF_Tree](Instructions README/RQT_TF_Tree.png)
 
-## CREDITS / PROJECT CONTRIBUTION
+## Credits / Project Contribution
 
 | Official Full Name  | Student ID (MTech Applicable)  | Work Items (Who Did What) | Email (Optional) |
 | :------------ |:---------------:| :-----| :-----|

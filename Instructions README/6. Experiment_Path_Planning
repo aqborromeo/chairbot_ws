@@ -39,6 +39,7 @@ NOTE: Refer to the main Readme.md file for description of each package.
     3. Open third terminal to run the python script
 
     # To run the python sript for single turtlebot 
+    $ chmod 755 ~/chairbot_ws/src/chairbot_path_planning/src/path_planning.py
     $ rosrun chairbot_path_planning path_planning.py
 
     3. Go to rviz and test the path_planning see the path
