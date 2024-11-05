@@ -23,7 +23,8 @@
     <!-- <arg name="world_name" value="$(find turtlebot3_gazebo)/worlds/turtlebot3_world.world"/>  -->
     <!-- <arg name="world_name" value="$(find ros_multi_tb3)/worlds/om.world"/> -->
     <!-- <arg name="world_name" value="$(find ros_multi_tb3)/worlds/krishna.world"/> -->
-    <arg name="world_name" value="$(find chairbot_simulation)/worlds/office2.world"/>
+    <!-- <arg name="world_name" value="$(find chairbot_simulation)/worlds/office2.world"/> -->
+    <arg name="world_name" value="$(find chairbot_simulation)/worlds/office_tables_1.world"/>
     <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
     <arg name="gui" value="true"/>
