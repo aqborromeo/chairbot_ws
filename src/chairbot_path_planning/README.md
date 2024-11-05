@@ -43,9 +43,26 @@ $ roslaunch chairbot_path_planning single_chair.launch
 ```
 $ source ~/chairbot_ws/devel/setup.bash
 $ roslaunch chairbot_path_planning chairbot_path_planning.launch map_file:=$HOME/chairbot_ws/src/chairbot_path_planning/maps/office_map2.yaml
+```
 
 3. Go to rviz and test the path_planning by clicking "2D Post Estinamate" and "2D Nav Goal".
 
 ## Structure
 ```
 .
+├── CMakeLists.txt
+├── config
+├── include
+│   └── chairbot_path_planning
+├── maps
+│   ├── office_map2.pgm
+│   └── office_map2.yaml
+├── package.xml
+├── README.md
+└── src
+    ├── chairbot_path_planning_seq.py
+    ├── chairbot_path_planning_sim.py
+    └── path_planning.py
+
+5 directories, 8 files
+```

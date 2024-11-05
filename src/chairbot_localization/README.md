@@ -83,7 +83,6 @@ NOTE: notice the logs for the localization, when the chairbot is out of the map 
 ```
 .
 ├── CMakeLists.txt
-├── README.md
 ├── config
 │   ├── base_local_planner_params.yaml
 │   ├── costmap_common_params_waffle_pi.yaml
@@ -92,12 +91,10 @@ NOTE: notice the logs for the localization, when the chairbot is out of the map 
 │   ├── gmapping_params.yaml
 │   ├── local_costmap_params.yaml
 │   └── move_base_params.yaml
-├── include
-│   └── chairbot_localization
 ├── launch
 │   ├── amcl.launch
-│   ├── chairbot_localization.launch
 │   ├── chairbot_localization_gmapping.launch
+│   ├── chairbot_localization.launch
 │   ├── chairbot_localization_slam.launch
 │   ├── chairbots.launch
 │   ├── move_base.launch
@@ -105,7 +102,6 @@ NOTE: notice the logs for the localization, when the chairbot is out of the map 
 ├── maps
 │   ├── office_map.pgm
 │   └── office_map.yaml
-├── models
 ├── package.xml
 ├── param
 │   ├── base_local_planner_params.yaml
@@ -114,16 +110,19 @@ NOTE: notice the logs for the localization, when the chairbot is out of the map 
 │   ├── global_costmap_params.yaml
 │   ├── local_costmap_params.yaml
 │   └── move_base_params.yaml
+├── README.md
 ├── rviz
-│   ├── chairbot_localization_gmapping.rviz
-│   └── chairbot_localization_gmapping_confroom.rviz
+│   ├── chairbot_localization_gmapping_confroom.rviz
+│   └── chairbot_localization_gmapping.rviz
 ├── src
-│   └── CMakeLists.txt -> /opt/ros/noetic/share/catkin/cmake/toplevel.cmake
+│   └── CMakeLists.txt
 ├── urdf
 │   ├── turtlebot3_waffle.gazebo.xacro
 │   └── turtlebot3_waffle_pi.urdf.xacro
 └── worlds
     ├── office1.world
     └── office2.world
+
+8 directories, 32 files
 
 ```

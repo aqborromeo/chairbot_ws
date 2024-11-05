@@ -17,13 +17,13 @@
   <arg name="third_tb3_y_pos" default="8.82"/>
   <arg name="third_tb3_z_pos" default="0.97"/>
   
-  <arg name="map_file" default="$(find chairbot_navigation)/maps/office_map2.yaml"/>
+  <arg name="map_file" default="$(find multi_chairbot)/maps/office_map2.yaml"/>
   <arg name="open_rviz" default="false"/>
   <arg name="move_forward_only" default="false"/>
   <arg name="set_map_frame"  default="map"/>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find chairbot_simulation)/worlds/office2.world"/>
+    <arg name="world_name" value="$(find multi_chairbot)/worlds/office2.world"/>
     <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
     <arg name="gui" value="true"/>
@@ -32,7 +32,7 @@
   </include>
 
   <group ns = "$(arg first_tb3)">
-    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find chairbot_simulation)/urdf/turtlebot3_$(arg model).urdf.xacro' "  />
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find multi_chairbot)/urdf/turtlebot3_$(arg model).urdf.xacro' "  />
     <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher_$(arg first_tb3)" output="screen">
       <param name="publish_frequency" type="double" value="50.0" />
       <param name="tf_prefix" value="$(arg first_tb3)" />
@@ -42,7 +42,7 @@
   </group>
 
   <group ns = "$(arg second_tb3)">
-    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find chairbot_simulation)/urdf/turtlebot3_$(arg model).urdf.xacro' "  />
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find multi_chairbot)/urdf/turtlebot3_$(arg model).urdf.xacro' "  />
     <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher_$(arg second_tb3)" output="screen">
       <param name="publish_frequency" type="double" value="50.0" />
       <param name="tf_prefix" value="$(arg second_tb3)" />
@@ -52,7 +52,7 @@
   </group>
 
   <group ns = "$(arg third_tb3)">
-    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find chairbot_simulation)/urdf/turtlebot3_$(arg model).urdf.xacro' "  />
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find multi_chairbot)/urdf/turtlebot3_$(arg model).urdf.xacro' "  />
     <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher_$(arg third_tb3)" output="screen">
       <param name="publish_frequency" type="double" value="50.0" />
       <param name="tf_prefix" value="$(arg third_tb3)" />
@@ -69,7 +69,7 @@
   
 
   <group ns = "$(arg first_tb3)">
-    <include file="$(find chairbot_navigation)/launch/one_robot_v2.launch">
+    <include file="$(find multi_chairbot)/launch/one_robot_v2.launch">
       <arg name="model" value="$(arg model)"/>
       <arg name="set_base_frame" value="$(arg first_tb3)/base_footprint"/>
       <arg name="set_odom_frame" value="$(arg first_tb3)/odom"/>
@@ -85,7 +85,7 @@
   </group>
 
   <group ns = "$(arg second_tb3)">
-    <include file="$(find chairbot_navigation)/launch/one_robot_v2.launch">
+    <include file="$(find multi_chairbot)/launch/one_robot_v2.launch">
       <arg name="model" value="$(arg model)"/>
       <arg name="set_base_frame" value="$(arg second_tb3)/base_footprint"/>
       <arg name="set_odom_frame" value="$(arg second_tb3)/odom"/>
@@ -100,7 +100,7 @@
   </group>
   
   <group ns = "$(arg third_tb3)">
-    <include file="$(find chairbot_navigation)/launch/one_robot_v2.launch">
+    <include file="$(find multi_chairbot)/launch/one_robot_v2.launch">
       <arg name="model" value="$(arg model)"/>
       <arg name="set_base_frame" value="$(arg third_tb3)/base_footprint"/>
       <arg name="set_odom_frame" value="$(arg third_tb3)/odom"/>

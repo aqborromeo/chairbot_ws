@@ -33,13 +33,15 @@ NOTE: you will need to adjust the view further to the left side in the rviz wind
 6. Open another terminal, and run the `teleop` node and move around, then save the map.
 
 roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
-rosrun map_server map_saver -f ~/chairbot_ws/src/chairbot_slam/maps/office_map3
+rosrun map_server map_saver -f ~/chairbot_ws/src/chairbot_localization/maps/office_map4
 
 7. Close all terminal, to test localization use run the following command.
 
+NOTE: if you are using the old map set in chairbot_localization.launch and not the map you generated update ensure to update the path in office_map.pgm
+
 terminal_1
 
-roslaunch chairbot_localization chairbot_localization.launch
+$ roslaunch chairbot_localization single_chair.launch
 
 terminal_2
 

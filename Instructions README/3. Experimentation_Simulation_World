@@ -36,9 +36,9 @@ $ cd ~/chairbot_ws/src/chairbot_simulation/
 7. Close all terminal and reopen and new one. Launch a new terminal to launch chairbot.
 
 # To launch a single chairbot
+$ source ~/chairbot_ws/devel/setup.bash
 $ roslaunch chairbot_simulation single_chair.launch
 
 # To launch a multiple chairbot
-# $ roslaunch chairbot_simulation chairbots.launch
+$ source ~/chairbot_ws/devel/setup.bash
 $ roslaunch chairbot_simulation multi_chair.launch
-

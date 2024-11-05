@@ -44,7 +44,7 @@ $ roslaunch chairbot_simulation chairbots.launch
 ```
 
 NOTE: For the custom meeting room table use for the office2.world here are the geometric dimensions.
-
+```
 Counter Top
 X: 1.2192
 Y: 4.2672
@@ -54,13 +54,51 @@ Base
 X: 0.6096
 Y: 4.2672 - (0.6096) = 3.6576
 Z: 0.6858
+```
 
 # Structure
 ```
 .
-├── CMakeLists.txt
-├── README.md
 ├── build
+│   ├── atomic_configure
+│   │   ├── env.sh
+│   │   ├── local_setup.bash
+│   │   ├── local_setup.sh
+│   │   ├── local_setup.zsh
+│   │   ├── setup.bash
+│   │   ├── setup.sh
+│   │   ├── _setup_util.py
+│   │   └── setup.zsh
+│   ├── catkin
+│   │   └── catkin_generated
+│   │       └── version
+│   │           └── package.cmake
+│   ├── catkin_generated
+│   │   ├── env_cached.sh
+│   │   ├── generate_cached_setup.py
+│   │   ├── installspace
+│   │   │   ├── chairbot_simulationConfig.cmake
+│   │   │   ├── chairbot_simulationConfig-version.cmake
+│   │   │   ├── chairbot_simulation.pc
+│   │   │   ├── env.sh
+│   │   │   ├── local_setup.bash
+│   │   │   ├── local_setup.sh
+│   │   │   ├── local_setup.zsh
+│   │   │   ├── setup.bash
+│   │   │   ├── setup.sh
+│   │   │   ├── _setup_util.py
+│   │   │   └── setup.zsh
+│   │   ├── ordered_paths.cmake
+│   │   ├── package.cmake
+│   │   ├── pkg.develspace.context.pc.py
+│   │   ├── pkg.installspace.context.pc.py
+│   │   ├── setup_cached.sh
+│   │   └── stamps
+│   │       └── chairbot_simulation
+│   │           ├── interrogate_setup_dot_py.py.stamp
+│   │           ├── package.xml.stamp
+│   │           ├── pkg.pc.em.stamp
+│   │           └── _setup_util.py.stamp
 │   ├── CATKIN_IGNORE
 │   ├── CMakeCache.txt
 │   ├── CMakeFiles
@@ -71,170 +109,123 @@ Z: 0.6858
 │   │   │   ├── CMakeDetermineCompilerABI_CXX.bin
 │   │   │   ├── CMakeSystem.cmake
 │   │   │   ├── CompilerIdC
-│   │   │   │   ├── CMakeCCompilerId.c
 │   │   │   │   ├── a.out
-│   │   │   │   └── tmp
+│   │   │   │   └── CMakeCCompilerId.c
 │   │   │   └── CompilerIdCXX
-│   │   │       ├── CMakeCXXCompilerId.cpp
 │   │   │       ├── a.out
-│   │   │       └── tmp
-│   │   ├── CMakeDirectoryInformation.cmake
-│   │   ├── CMakeError.log
-│   │   ├── CMakeOutput.log
-│   │   ├── CMakeRuleHashes.txt
-│   │   ├── CMakeTmp
-│   │   ├── Makefile.cmake
-│   │   ├── Makefile2
-│   │   ├── TargetDirectories.txt
+│   │   │       └── CMakeCXXCompilerId.cpp
 │   │   ├── clean_test_results.dir
-│   │   │   ├── DependInfo.cmake
 │   │   │   ├── build.make
 │   │   │   ├── cmake_clean.cmake
+│   │   │   ├── DependInfo.cmake
 │   │   │   └── progress.make
 │   │   ├── cmake.check_cache
+│   │   ├── CMakeDirectoryInformation.cmake
+│   │   ├── CMakeRuleHashes.txt
 │   │   ├── download_extra_data.dir
-│   │   │   ├── DependInfo.cmake
 │   │   │   ├── build.make
 │   │   │   ├── cmake_clean.cmake
+│   │   │   ├── DependInfo.cmake
 │   │   │   └── progress.make
 │   │   ├── doxygen.dir
-│   │   │   ├── DependInfo.cmake
 │   │   │   ├── build.make
 │   │   │   ├── cmake_clean.cmake
+│   │   │   ├── DependInfo.cmake
 │   │   │   └── progress.make
+│   │   ├── Makefile2
+│   │   ├── Makefile.cmake
 │   │   ├── progress.marks
 │   │   ├── roscpp_generate_messages_cpp.dir
-│   │   │   ├── DependInfo.cmake
 │   │   │   ├── build.make
 │   │   │   ├── cmake_clean.cmake
+│   │   │   ├── DependInfo.cmake
 │   │   │   └── progress.make
 │   │   ├── roscpp_generate_messages_eus.dir
-│   │   │   ├── DependInfo.cmake
 │   │   │   ├── build.make
 │   │   │   ├── cmake_clean.cmake
+│   │   │   ├── DependInfo.cmake
 │   │   │   └── progress.make
 │   │   ├── roscpp_generate_messages_lisp.dir
-│   │   │   ├── DependInfo.cmake
 │   │   │   ├── build.make
 │   │   │   ├── cmake_clean.cmake
+│   │   │   ├── DependInfo.cmake
 │   │   │   └── progress.make
 │   │   ├── roscpp_generate_messages_nodejs.dir
-│   │   │   ├── DependInfo.cmake
 │   │   │   ├── build.make
 │   │   │   ├── cmake_clean.cmake
+│   │   │   ├── DependInfo.cmake
 │   │   │   └── progress.make
 │   │   ├── roscpp_generate_messages_py.dir
-│   │   │   ├── DependInfo.cmake
 │   │   │   ├── build.make
 │   │   │   ├── cmake_clean.cmake
+│   │   │   ├── DependInfo.cmake
 │   │   │   └── progress.make
 │   │   ├── rosgraph_msgs_generate_messages_cpp.dir
-│   │   │   ├── DependInfo.cmake
 │   │   │   ├── build.make
 │   │   │   ├── cmake_clean.cmake
+│   │   │   ├── DependInfo.cmake
 │   │   │   └── progress.make
 │   │   ├── rosgraph_msgs_generate_messages_eus.dir
-│   │   │   ├── DependInfo.cmake
 │   │   │   ├── build.make
 │   │   │   ├── cmake_clean.cmake
+│   │   │   ├── DependInfo.cmake
 │   │   │   └── progress.make
 │   │   ├── rosgraph_msgs_generate_messages_lisp.dir
-│   │   │   ├── DependInfo.cmake
 │   │   │   ├── build.make
 │   │   │   ├── cmake_clean.cmake
+│   │   │   ├── DependInfo.cmake
 │   │   │   └── progress.make
 │   │   ├── rosgraph_msgs_generate_messages_nodejs.dir
-│   │   │   ├── DependInfo.cmake
 │   │   │   ├── build.make
 │   │   │   ├── cmake_clean.cmake
+│   │   │   ├── DependInfo.cmake
 │   │   │   └── progress.make
 │   │   ├── rosgraph_msgs_generate_messages_py.dir
-│   │   │   ├── DependInfo.cmake
 │   │   │   ├── build.make
 │   │   │   ├── cmake_clean.cmake
+│   │   │   ├── DependInfo.cmake
 │   │   │   └── progress.make
 │   │   ├── run_tests.dir
-│   │   │   ├── DependInfo.cmake
 │   │   │   ├── build.make
 │   │   │   ├── cmake_clean.cmake
+│   │   │   ├── DependInfo.cmake
 │   │   │   └── progress.make
 │   │   ├── std_msgs_generate_messages_cpp.dir
-│   │   │   ├── DependInfo.cmake
 │   │   │   ├── build.make
 │   │   │   ├── cmake_clean.cmake
+│   │   │   ├── DependInfo.cmake
 │   │   │   └── progress.make
 │   │   ├── std_msgs_generate_messages_eus.dir
-│   │   │   ├── DependInfo.cmake
 │   │   │   ├── build.make
 │   │   │   ├── cmake_clean.cmake
+│   │   │   ├── DependInfo.cmake
 │   │   │   └── progress.make
 │   │   ├── std_msgs_generate_messages_lisp.dir
-│   │   │   ├── DependInfo.cmake
 │   │   │   ├── build.make
 │   │   │   ├── cmake_clean.cmake
+│   │   │   ├── DependInfo.cmake
 │   │   │   └── progress.make
 │   │   ├── std_msgs_generate_messages_nodejs.dir
-│   │   │   ├── DependInfo.cmake
 │   │   │   ├── build.make
 │   │   │   ├── cmake_clean.cmake
+│   │   │   ├── DependInfo.cmake
 │   │   │   └── progress.make
 │   │   ├── std_msgs_generate_messages_py.dir
-│   │   │   ├── DependInfo.cmake
 │   │   │   ├── build.make
 │   │   │   ├── cmake_clean.cmake
+│   │   │   ├── DependInfo.cmake
 │   │   │   └── progress.make
+│   │   ├── TargetDirectories.txt
 │   │   └── tests.dir
-│   │       ├── DependInfo.cmake
 │   │       ├── build.make
 │   │       ├── cmake_clean.cmake
+│   │       ├── DependInfo.cmake
 │   │       └── progress.make
+│   ├── cmake_install.cmake
 │   ├── CTestConfiguration.ini
 │   ├── CTestCustom.cmake
 │   ├── CTestTestfile.cmake
-│   ├── Makefile
-│   ├── atomic_configure
-│   │   ├── _setup_util.py
-│   │   ├── env.sh
-│   │   ├── local_setup.bash
-│   │   ├── local_setup.sh
-│   │   ├── local_setup.zsh
-│   │   ├── setup.bash
-│   │   ├── setup.sh
-│   │   └── setup.zsh
-│   ├── bin
-│   ├── catkin
-│   │   └── catkin_generated
-│   │       └── version
-│   │           └── package.cmake
-│   ├── catkin_generated
-│   │   ├── env_cached.sh
-│   │   ├── generate_cached_setup.py
-│   │   ├── installspace
-│   │   │   ├── _setup_util.py
-│   │   │   ├── chairbot_simulation.pc
-│   │   │   ├── chairbot_simulationConfig-version.cmake
-│   │   │   ├── chairbot_simulationConfig.cmake
-│   │   │   ├── env.sh
-│   │   │   ├── local_setup.bash
-│   │   │   ├── local_setup.sh
-│   │   │   ├── local_setup.zsh
-│   │   │   ├── setup.bash
-│   │   │   ├── setup.sh
-│   │   │   └── setup.zsh
-│   │   ├── ordered_paths.cmake
-│   │   ├── package.cmake
-│   │   ├── pkg.develspace.context.pc.py
-│   │   ├── pkg.installspace.context.pc.py
-│   │   ├── setup_cached.sh
-│   │   └── stamps
-│   │       └── chairbot_simulation
-│   │           ├── _setup_util.py.stamp
-│   │           ├── interrogate_setup_dot_py.py.stamp
-│   │           ├── package.xml.stamp
-│   │           └── pkg.pc.em.stamp
-│   ├── cmake_install.cmake
 │   ├── devel
-│   │   ├── _setup_util.py
 │   │   ├── cmake.lock
 │   │   ├── env.sh
 │   │   ├── lib
@@ -245,91 +236,89 @@ Z: 0.6858
 │   │   ├── local_setup.zsh
 │   │   ├── setup.bash
 │   │   ├── setup.sh
+│   │   ├── _setup_util.py
 │   │   ├── setup.zsh
 │   │   └── share
 │   │       └── chairbot_simulation
 │   │           └── cmake
-│   │               ├── chairbot_simulationConfig-version.cmake
-│   │               └── chairbot_simulationConfig.cmake
+│   │               ├── chairbot_simulationConfig.cmake
+│   │               └── chairbot_simulationConfig-version.cmake
 │   ├── gtest
 │   │   ├── CMakeFiles
 │   │   │   ├── CMakeDirectoryInformation.cmake
 │   │   │   └── progress.marks
-│   │   ├── CTestTestfile.cmake
-│   │   ├── Makefile
 │   │   ├── cmake_install.cmake
+│   │   ├── CTestTestfile.cmake
 │   │   ├── googlemock
 │   │   │   ├── CMakeFiles
 │   │   │   │   ├── CMakeDirectoryInformation.cmake
 │   │   │   │   ├── gmock.dir
-│   │   │   │   │   ├── DependInfo.cmake
 │   │   │   │   │   ├── build.make
 │   │   │   │   │   ├── cmake_clean.cmake
+│   │   │   │   │   ├── DependInfo.cmake
 │   │   │   │   │   ├── depend.make
 │   │   │   │   │   ├── flags.make
 │   │   │   │   │   ├── link.txt
-│   │   │   │   │   ├── progress.make
-│   │   │   │   │   └── src
+│   │   │   │   │   └── progress.make
 │   │   │   │   ├── gmock_main.dir
-│   │   │   │   │   ├── DependInfo.cmake
 │   │   │   │   │   ├── build.make
 │   │   │   │   │   ├── cmake_clean.cmake
+│   │   │   │   │   ├── DependInfo.cmake
 │   │   │   │   │   ├── depend.make
 │   │   │   │   │   ├── flags.make
 │   │   │   │   │   ├── link.txt
-│   │   │   │   │   ├── progress.make
-│   │   │   │   │   └── src
+│   │   │   │   │   └── progress.make
 │   │   │   │   └── progress.marks
+│   │   │   ├── cmake_install.cmake
 │   │   │   ├── CTestTestfile.cmake
-│   │   │   ├── Makefile
-│   │   │   └── cmake_install.cmake
+│   │   │   └── Makefile
 │   │   ├── googletest
 │   │   │   ├── CMakeFiles
 │   │   │   │   ├── CMakeDirectoryInformation.cmake
 │   │   │   │   ├── gtest.dir
-│   │   │   │   │   ├── DependInfo.cmake
 │   │   │   │   │   ├── build.make
 │   │   │   │   │   ├── cmake_clean.cmake
+│   │   │   │   │   ├── DependInfo.cmake
 │   │   │   │   │   ├── depend.make
 │   │   │   │   │   ├── flags.make
 │   │   │   │   │   ├── link.txt
-│   │   │   │   │   ├── progress.make
-│   │   │   │   │   └── src
+│   │   │   │   │   └── progress.make
 │   │   │   │   ├── gtest_main.dir
-│   │   │   │   │   ├── DependInfo.cmake
 │   │   │   │   │   ├── build.make
 │   │   │   │   │   ├── cmake_clean.cmake
+│   │   │   │   │   ├── DependInfo.cmake
 │   │   │   │   │   ├── depend.make
 │   │   │   │   │   ├── flags.make
 │   │   │   │   │   ├── link.txt
-│   │   │   │   │   ├── progress.make
-│   │   │   │   │   └── src
+│   │   │   │   │   └── progress.make
 │   │   │   │   └── progress.marks
+│   │   │   ├── cmake_install.cmake
 │   │   │   ├── CTestTestfile.cmake
-│   │   │   ├── Makefile
-│   │   │   └── cmake_install.cmake
-│   │   └── lib
-│   └── test_results
-├── include
-│   └── chairbot_simulation
+│   │   │   └── Makefile
+│   │   └── Makefile
+│   └── Makefile
+├── CMakeLists.txt
 ├── launch
-│   └── chairbots.launch
+│   ├── multi_chair.launch
+│   ├── multi_chair_orig.launch
+│   ├── single_chair.launch
+│   └── spawn_model.launch
 ├── models
 │   ├── box_table
-│   │   ├── model.config
-│   │   └── model.sdf
+│   │   └── model.config
 │   └── box_table1
-│       ├── model.config
-│       └── model.sdf
+│       └── model.config
 ├── package.xml
-├── src
+├── README.md
 ├── urdf
 │   ├── turtlebot3_waffle_pi.gazebo.xacro
 │   └── turtlebot3_waffle_pi.urdf.xacro
 └── worlds
-    ├── office.world
     ├── office1.world
     ├── office2.world
     ├── office_empty.world
-    └── office_table.world
+    ├── office_table.world
+    └── office.world
+
+55 directories, 205 files
 ```
