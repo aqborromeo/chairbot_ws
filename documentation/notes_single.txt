@@ -1,0 +1,52 @@
+RESULTS: for base_footprint to odom
+Chain is: base_footprint -> odom
+Net delay     avg = 0.0182718: max = 0.05
+
+Frames:
+Frame: base_footprint published by unknown_publisher Average Delay: 0.00149005 Max Delay: 0.02
+Frame: odom published by unknown_publisher Average Delay: -0.491679 Max Delay: 0
+
+All Broadcasters:
+Node: unknown_publisher 65.0787 Hz, Average Delay: -0.03563 Max Delay: 0.022
+Node: unknown_publisher(static) 1e+08 Hz, Average Delay: 0 Max Delay: 0
+
+
+
+Loaded plugin tf.tfwtf
+No package or stack in the current directory
+================================================================================
+Static checks summary:
+
+No errors or warnings
+================================================================================
+Beginning tests of your ROS graph. These may take a while...
+analyzing graph...
+... done analyzing graph
+running graph rules...
+... done running graph rules
+running tf checks, this will take a second...
+... tf checks complete
+
+Online checks summary:
+
+Found 2 warning(s).
+Warnings are things that may be just fine, but are sometimes at fault
+
+WARNING The following node subscriptions are unconnected:
+ * /gazebo:
+   * /gazebo/set_link_state
+   * /gazebo/set_model_state
+ * /rviz:
+   * /map_updates
+ * /move_base:
+   * /move_base/cancel
+
+WARNING These nodes have died:
+ * spawn_urdf-4
+
+
+Found 1 error(s).
+
+ERROR The following nodes should be connected but aren't:
+ * /move_base->/move_base (/move_base/local_costmap/footprint)
+ * /move_base->/move_base (/move_base/global_costmap/footprint)

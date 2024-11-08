@@ -40,7 +40,7 @@ $ catkin_make
 
 4. Launch the world and robot
 ```
-$ source ~/chairbot_ws/devel/setup.bash
+$ source devel/setup.bash
 $ roslaunch chairbot_localization single_chair.launch
 ```
 

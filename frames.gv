@@ -1,0 +1,17 @@
+digraph G {
+"tb3_1/odom" -> "tb3_1/base_footprint"[label="Broadcaster: /gazebo\nAverage rate: 30.203 Hz\nMost recent transform: 2634.979 ( 0.009 sec old)\nBuffer length: 4.834 sec\n"];
+"tb3_0/odom" -> "tb3_0/base_footprint"[label="Broadcaster: /gazebo\nAverage rate: 30.208 Hz\nMost recent transform: 2634.956 ( 0.032 sec old)\nBuffer length: 4.800 sec\n"];
+"tb3_2/odom" -> "tb3_2/base_footprint"[label="Broadcaster: /gazebo\nAverage rate: 30.208 Hz\nMost recent transform: 2634.967 ( 0.021 sec old)\nBuffer length: 4.800 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 2634.988"[ shape=plaintext ] ;
+ }->"tb3_1/odom";
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 2634.988"[ shape=plaintext ] ;
+ }->"tb3_0/odom";
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 2634.988"[ shape=plaintext ] ;
+ }->"tb3_2/odom";
+}
