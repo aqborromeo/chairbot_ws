@@ -1,0 +1,221 @@
+\documentclass[a4paper,twocolumn]{article}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{spconf,amsmath,graphicx}
+\usepackage[style=numeric,sorting=none,]{biblatex}
+\usepackage{float}
+\addbibresource{references.bib}
+\usepackage{enumitem}
+\usepackage[toc,page]{appendix}
+\usepackage{multirow}
+\usepackage{tabularx} % For automatic width adjustment
+\geometry{margin=1in}
+\pagenumbering{arabic}
+
+\title{Autonomous Parking of Robotic Chairs}
+
+\name{Chua, Jack Yune, Toh, Zhi Yuan, Fong Zhi En Kelvin, Borromeo Angelie}
+
+\address{National University of Singapore, Singapore 119615}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This paper presents the software architecture developed for robotic chairs capable of autonomous parking. The system integrates various algorithms for navigation, pathfinding, object detection, decision-making, obstacle avoidance, and parking mechanisms. We discuss the methodologies employed in training and evaluating the system's performance in dynamic office environments.
+\end{abstract}
+
+\section{Introduction}
+The demand for automation in office environments has spurred interest in robotic solutions that enhance workspace efficiency. This research focuses on developing robotic chairs that can autonomously navigate and park themselves at desks. The software architecture plays a crucial role in enabling these functionalities, ensuring seamless operation in real-world scenarios.
+
+The main software stack that will be Robot Operating System (ROS), Noetic Ninjemys distribution, which is the thirteenth ROS distribution release. 
+
+We will be simulating using Tutrtlebot3 representing the automated chairs, and using a simulated office environment to show how it each robot can return to a preset point. 
+
+\section{Related Work}
+Prior studies have explored various aspects of robotics and AI, particularly in mobility and navigation. Notable contributions include:
+
+- **Vision-Guided Robotics**: Techniques that emulate human visual systems for navigation.
+- **Intelligent Parking Systems**: Applications in vehicles that inspire similar functionalities in office furniture.
+
+Other works we can reference to includes projects where multiple robots are used in simulations. One example is the multi-turtlebot3 forked from the original original turtlebot3 project \cite{multiturtle}. Due to changes to ROS Noetic from when this project was first created in 2019, the simulation did not work. 
+
+The other project referenced is the free\_fleet, an open-source robot fleet management system built on ROS \cite{freefleet}. This project was very helpful with developing the simulation of multiple robots running in gazebo, as it has updates from 2023 which works with the current version of ROS Noetic. 
+
+
+\section{Software Architecture}
+The software architecture consists of several key components designed to facilitate efficient operation:
+
+\subsection{Localization and Mapping Algorithms}
+\subsubsection{SLAM GMapping}
+\label{subsubsec:gmapping}
+The SLAM GMapping algorithm is used to map out a given office space. GMapping is a widely used method for Simultaneous Localization and Mapping (SLAM) in mobile robotics. It employs a Rao-Blackwellized Particle Filter (RBPF) to effectively estimate the robot's pose while concurrently building a map of the environment\cite{grisetti2007improved}.
+
+GMapping integrates laser scan data with odometry information for more accurate pose estimation. The algorithm uses laser range data to create grid maps, where each cell in the grid represents the probability of occupancy based on sensor measurements. The RBPF framework is advantageous as it can represent non-Gaussian distributions and non-linear assumptions effectively, making it suitable for complex environments.
+
+The GMapping process involves these key steps\cite{grisetti2007improved}:
+\begin{enumerate}
+    \item \textbf{Initial Pose Estimation:} The robot's initial pose is estimated based on previous laser scan and odometry measurements.
+    
+    \item \textbf{Particle Filtering:} Each particle maintains a hypothesis about the robot's pose and an associated map. As new laser scans are received, particles are updated based on their likelihood given the current observations.
+    
+    \item \textbf{Resampling:} To mitigate particle depletion, adaptive resampling selectively retains particles that best match the observed data.
+\end{enumerate}
+The above steps are iterated allowing for refinement of both the robot's trajectory and the environmental map as the robot navigates through its surroundings.
+
+\subsubsection{Adaptive Monte Carlo Localization (AMCL)}
+For localization in environments where a map of the office layout is already available, Adaptive Monte Carlo Localization (AMCL) is offered as an alternative option to GMapping\ref{subsubsec:gmapping}. 
+
+The AMCL is a probabilistic localization system designed for mobile robots operating in 2D environments, implementing the KLD-sampling Monte Carlo localization approach\cite{thrun2005probabilistic}. It uses a particle filter to estimate the robot's pose relative to a known map. This method is effective in dynamic settings where the robot must continuously update its position based on sensor data, allowing for robust navigation and interaction with the environment.
+
+The method employs a particle filter that maintains multiple hypotheses about the robot's location, which are updated as new laser scan data is received. The KLD-sampling technique ensures that the particles adjust adaptively to maintain an appropriate level of detail in the localization process while minimizing computational overhead. This adaptability allows the system to efficiently handle varying levels of uncertainty and complexity in the environment.
+
+AMCL relies on both laser scans and odometry for localization, providing accurate pose estimates in dynamic settings. For odometry the omni-directional differential drive motion model is used as it is suitable for the Turtlebot3 motion.
+
+
+\subsection{Navigation and Pathfinding Algorithms}
+
+\subsubsection{Rapidly-exploring Random Trees (RRT)}
+\label{subsubsec:rrt}
+For single or multi-robot exploration and path planning using the Rapidly-Exploring Random Tree (RRT) algorithm. Map exploration is conducted by detecting frontier points in an occupancy grid, which represent unexplored areas.
+
+RRT Exploration algorithm, as implemented by Hassan\cite{rrt_exploration} is used, which consists of several key components:
+
+\begin{enumerate}
+    \item \textbf{Global RRT Frontier Detector:} This node identifies frontier points in the map and publishes them for further processing. It runs as a single instance in multi-robot setups to ensure efficient detection.
+    
+    \item \textbf{Local RRT Frontier Detector:} Similar to the global detector, this node identifies nearby frontier points and resets its tree with each detection. Each robot in a multi-robot system runs its own instance of this node.
+    
+    \item \textbf{Filter Node:} This node consolidates detected frontier points from all detectors, filtering out invalid or redundant points before passing them to the assigner node.
+    
+    \item \textbf{Assigner Node:} Responsible for commanding robots to explore the filtered frontier points, this node utilizes the navigation stack (i.e. GMapping \ref{subsubsec:gmapping} to direct robot movements toward exploration targets.
+\end{enumerate}
+
+\subsection{Object Detection}
+The system employs computer vision techniques to identify obstacles and desks:
+- **Convolutional Neural Networks (CNNs)**: For detecting obstacles using cameras mounted on the robotic chairs.
+- **OpenCV**: A library that processes images to detect edges and contours, assisting in real-time object recognition.
+
+\subsection{Decision-Making Models}
+The decision-making process is managed through:
+- **Finite State Machines (FSM)**: To handle different states of the chair based on sensor inputs.
+- **Reinforcement Learning (RL)**: To optimize decision-making strategies over time.
+
+\subsection{Obstacle Avoidance Techniques}
+The system utilizes:
+- **Potential Fields Method**: Treats obstacles as repulsive forces guiding the chair away from them.
+- **Dynamic Window Approach (DWA)**: Evaluates possible velocities to avoid collisions while maintaining speed.
+
+\subsection{Parking Mechanism}
+The parking mechanism involves:
+- **Alignment Algorithms**: To adjust the chair's position relative to the desk.
+- **Control Systems**:
+    - **PID Controllers**: For fine-tuning movements during parking.
+    - **Model Predictive Control (MPC)**: To predict future states based on current trajectories.
+
+\section{Implementation and Evaluation Methods}
+To ensure robust performance, we employed various training and evaluation methods:
+
+\subsection{Simulation Environments}
+Platforms like Gazebo with ROS (Robot Operating System) were utilized to simulate different office layouts and test algorithms before real-world deployment.
+
+In our test case, we have a pre-mapped environment of a room in an office. This was done by mapping the room with a turtlebot3 first, to get a generated map. The map is then cleaned up, and point marked for where the chairs should return to.
+
+Using the idea of how chairs are all over the room, we initialize the robots that simulate the chairs around the room. The robots are then sent goals locations, which are where the chairs are supposed to be, through ROS.
+
+\subsubsection{Multirobot collaborative mapping}
+
+For multi-robot navigation and path planning, the map-merge package is used ROS Noetic as the tool to merge occupancy grid maps generated by multiple robots operating in the shared environment. Implemented for collaborative multi-Chairbots, individual robots create their own maps of the same area and publishes them to a shared map-merge node, and these maps are integrated to form a comprehensive representation of the environment. For the current project not more than three robots are used for testing to keep the computational costs within reasonable bounds.
+
+The package operates by subscribing to map topics published by individual robots (i.e. "robot\_map\_topic"). These maps are combined and published as a common map (i.e. "merged\_map\_topic"). These published topics can be visualized in Rviz. 
+
+The merging process can function with or without known initial poses for the robots. When initial poses are provided (which is the preferred choice in this project), the merging is more accurate, as it utilizes these positions to align the maps effectively. Conversely, if initial poses are unknown, the package employs a feature-matching algorithm to estimate transformations between grids, which requires sufficient overlap between the maps for reliable merging, and additional computational cost for calculating the map overlap.
+
+\subsection{Localization and Mapping Algorithms}
+\subsubsection{SLAM GMapping}
+The project implemented GMapping via the `slam\_gmapping` node from the ROS `gmapping` package which is a ROS wrapper for OpenSlam's Gmapping implementation\cite{rabaud_gmapping}. It subscribes to raw laser scan data and odometry as inputs, and publishes a 2D occupancy grid map that can be visualized and utilized for navigation tasks. The algorithm requires specific transformations between coordinate frames (e.g., from the robot base to the laser sensor) to accurately interpret sensor data relative to the robot's position.
+
+\subsubsection{RRT}
+The `rrt\_exploration` package is used for multi-robot exploration using the Rapidly-Exploring Random Tree (RRT) algorithm described in section \ref{subsubsec:rrt}. This package facilitate both global and local frontier detection, and is therefore suitable for single and multi-robot configurations. 
+
+The `rrt\_exploration` package consists of several key components:
+
+\begin{enumerate}
+    \item \textbf{Global RRT Frontier Detector:} The node for global frontier runs as a single instance in multi-robot setups to ensure efficient detection.
+    
+    \item \textbf{Local RRT Frontier Detector:} the local frontier nodes are run individually for each robot in a multi-robot system.
+    
+    \item \textbf{Filter Node:} The filter node consolidates detected frontier points from all detectors, filtering out invalid or redundant points before passing them to the assigner node.
+    
+    \item \textbf{Assigner Node:} This node commands the robots to explore the filtered frontier points, using the navigation stack (i.e. GMapping \ref{subsubsec:gmapping} which directs robot movements toward exploration targets.
+\end{enumerate}
+
+
+\subsubsection{AMCL}
+To use AMCL within ROS environment, the TF tree was configured with a known map of the environment (either produce from the GMapping step \ref{subsubsec:gmapping}, or handcrafted from floor plans or room images). Laser scan data is provided through the appropriate topic (i.e. Turtlebot3 `base\_scan`). The node publishes the estimated pose and is integrated with other navigation components namely `move\_base` for autonomous navigation tasks.
+
+\subsection{Navigation and Path Planning}
+\subsubsection{Global and Local Planning}
+The `teb\_local\_planner` package is used for the 2D navigation, which provides an online optimal local trajectory planner for the mobile robots\cite{teb_local_planner}. This package implements the Timed Elastic Band (TEB) approach\cite{rosmann2012trajectory}\cite{rosmann2013efficient}\cite{rosmann2015planning}\cite{rosmann2017integrated}, which optimizes the robot's trajectory in real-time by minimizing execution time while considering various factors, namely safe navigation around obstacles, the robot's kinematic model and kinodynamic constraints such as maximum velocity and acceleration. The TEB method allows for efficient trajectory modification, making it particularly suitable for dynamic environments where quick adjustments are necessary, which also allows it to be used effectively for multiple mobile robot local path planning\cite{rosmann2015planning}.
+
+The `teb\_local\_planner` operates by refining an initial trajectory generated by a global planner during runtime, considering the aforementioned factors. RViz is used to visualize the planning, facilitating real-time monitoring and debugging of the planning process.
+
+\subsection{Data Collection}
+Data on movement efficiency, accuracy in parking, and response times were gathered using sensors and cameras during trials.
+
+\subsection{Performance Metrics}
+Success rates were evaluated based on:
+- Time taken to park.
+- Accuracy of positioning relative to the desk.
+- Ability to navigate around dynamic obstacles.
+
+\subsection{User Studies}
+User feedback sessions were conducted with participants interacting with the robotic chairs to assess usability and effectiveness in real-world scenarios.
+
+\section{Results and Discussion}
+Initial tests indicate that the robotic chairs successfully navigate to their designated parking spots with minimal human intervention. The findings suggest that autonomous parking chairs can significantly enhance workspace efficiency. Future work will involve refining algorithms and expanding system capabilities.
+
+\section{Challenges Faced}
+While implementing the ROS integration with Gazebo simulation, there were quite a few challenges that we came across. 
+\subsection{Lack for working examples}
+There were many examples in the multiple robots in ROS, however, many of the examples were not working, as ROS Noetic had been updated a few times since their project was created. Those updates has changed certain things in ROS that affected how multiple robots are linked up together. The multiple Turtlebot3 project examples ended up not working. The RQT tree produced showed tree where the map is disconnected from the robots 
+
+We eventually found a project that updated its code from last year, the Free-Fleet Project on Github \cite{freefleet}. We adapted the example code with multiple Turtlebot3s, and it started working. The RQT tree produced in this case shows one where all the parts are connected as expected. 
+
+\section{Future Work}
+\subsection{Hardware Implementation}
+With more budget, a hardware implementation can be developed for trials. The hardware implementation will require the robot to be bigger, for it to be a chair, and stronger, to be able to move the weight of itself around. The hardware implementation should have a similar sensors to the Turtlebot3, which is used in the simulation. 
+
+A charging point also needs to be developed for the robot, either with it being a docking point, using either mechanical or wireless charging point. It would be better if it can be built into where the chairs will be parked into at the end of the day.
+
+\subsection{Sensors Implementation}
+On top of the usual sensors that a Turtlebot3 has, like LiDar, markers can be installed as different points in the room, like corners of rooms and under tables, to sync location of the Chairbot, for it to be able to localize its location in a room, before it can plan its movement. The markers can also help the chairbot align to the tables, if there are makers placed under the tables. These markers can be QR code based to work with a camera. 
+
+\section{Conclusion}
+This research demonstrates the feasibility of autonomous robotic chairs in office settings, paving the way for further innovations in workplace automation. The integrated software architecture allows for efficient navigation, obstacle avoidance, and precise parking mechanisms.
+
+
+\section{Author Contributions}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c|p{0.6\columnwidth}} % Set second column to a fixed width (adjust as needed)
+    \hline\hline
+    Team Member & Responsibility\\\hline\hline
+    Fong Zhi En, Kelvin & Developer, Report \\ 
+    Chua Jack Yune & Developer for multirobot navigation \& exploration, Report \\
+    Member & Documentation, Report \\
+    Member & Documentation, Report \\
+    \hline\hline
+    \end{tabular}
+    \caption{Author Contributions}
+    \label{tab:my_label}
+\end{table}
+
+\printbibliography
+
+
+
+\end{document}
