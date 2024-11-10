@@ -12,4 +12,7 @@ $ sudo apt-get install ros-${ROS_DISTRO}-amcl
 $ sudo apt-get install ros-${ROS_DISTRO}-move-base
 $ sudo apt-get install ros-${ROS_DISTRO}-slam-gmapping
 $ pip install rospkg
+
+docker run -it -p 7860:7860 --platform=linux/amd64 --gpus all \
+	registry.hf.space/gokaygokay-florence-2:latest python app.py
 ```
