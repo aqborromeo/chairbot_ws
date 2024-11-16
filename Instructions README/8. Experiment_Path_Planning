@@ -58,4 +58,9 @@ NOTE: Refer to the main Readme.md file for description of each package.
 
     $ sudo ln -s /usr/bin/python3 /usr/bin/python
     $ chmod 755 ~/chairbot_ws/src/chairbot_path_planning/src/chairbot_path_planning.py
-    $ rosrun chairbot_path_planning chairbot_path_planning.py
+
+    # NOTE - to test simultaneous parking
+    $ rosrun chairbot_path_planning chairbot_path_planning_sim.py
+
+    # NOTE - to test Sequential parking
+    $ rosrun chairbot_path_planning chairbot_path_planning_seq.py
