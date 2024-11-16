@@ -1,0 +1,61 @@
+# UNDER CONSTRUCTION
+
+This will include
+- path planning
+- obstacle avoidance
+
+
+This instruction was created to run the steps use for our experimentation
+
+NOTE: Refer to the main Readme.md file for description of each package.
+
+# Package: Path_planning
+
+## Build
+    1. Initialize a catkin workspace
+
+    $ cd ~/chairbot_ws/src && catkin_init_workspace
+
+    2. Move back to the project folder and build
+
+    $ cd ..
+    $ catkin_make
+
+    3. In a terminal Launch the world and robot
+
+    $ source ~/chairbot_ws/devel/setup.bash
+
+## Path_Planning for A Single Chair
+
+    1. To launch the simulation stack for a single chair.
+    # NOTE: if you run this no need to run the chairbot.launch
+
+    $ roslaunch chairbot_simulation single_chair.launch
+
+    2. In another terminal launch the navigation stack.
+
+    $ roslaunch chairbot_navigation chairbot_navigation.launch
+
+    3. Open third terminal to run the python script
+
+    # To run the python sript for single turtlebot 
+    $ chmod 755 ~/chairbot_ws/src/chairbot_path_planning/src/path_planning.py
+    $ rosrun chairbot_path_planning path_planning.py
+
+    3. Go to rviz and test the path_planning see the path
+
+## Path_Planning for A Multiple Chairs (this was updated base on the multi chairbot experiment)
+
+    1.  To launch the simulation stack for a multi_chairs.
+
+    $ roslaunch chairbot_simulation multi_chair.launch
+
+    2. In another terminal launch the rviz navigation.
+
+    $ roslaunch chairbot_navigation multi_chair_rviz.launch
+
+    3. Open third terminal to run the python script.
+
+    $ sudo ln -s /usr/bin/python3 /usr/bin/python
+    $ chmod 755 ~/chairbot_ws/src/chairbot_path_planning/src/chairbot_path_planning.py
+    $ rosrun chairbot_path_planning chairbot_path_planning.py

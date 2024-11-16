@@ -1,0 +1,5 @@
+<launch>
+    <include file="$(find explore_lite)/launch/explore_0.launch"/>
+    <include file="$(find explore_lite)/launch/explore_1.launch"/>
+    <include file="$(find explore_lite)/launch/explore_2.launch"/>
+</launch>
