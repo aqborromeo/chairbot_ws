@@ -23,7 +23,7 @@ NOTE: Refer to the main Readme.md file for description of each package.
 
     3. In a terminal Launch the world and robot
 
-    $ source ~/chairbot_ws/devel/setup.bash
+    $ source devel/setup.bash
 
 ## Path_Planning for A Single Chair
 
@@ -64,3 +64,6 @@ NOTE: Refer to the main Readme.md file for description of each package.
 
     # NOTE - to test Sequential parking
     $ rosrun chairbot_path_planning chairbot_path_planning_seq.py
+
+    # NOTE - to test the auto generated waypoints
+    $ rosrun chairbot_path_planning chairbot_path_planning_sim_auto.py
