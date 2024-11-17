@@ -15,6 +15,9 @@ Panels:
         - /Local Map1/Planner1
         - /Goal_tb3_11
         - /RobotModel1
+        - /RobotModel_tb3_21
+        - /RobotModel_tb3_02/Links1
+        - /Goal_tb3_21
       Splitter Ratio: 0.5473440885543823
     Tree Height: 463
   - Class: rviz/Selection
